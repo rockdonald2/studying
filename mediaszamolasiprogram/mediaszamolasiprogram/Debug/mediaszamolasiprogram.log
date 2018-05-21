@@ -1,0 +1,3 @@
+﻿  mediaszamolasiprogram.cpp
+e:\programok\c++\repos\mediaszamolasiprogram\mediaszamolasiprogram\mediaszamolasiprogram.cpp(27): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  mediaszamolasiprogram.vcxproj -> E:\Programok\C++\Repos\mediaszamolasiprogram\Debug\mediaszamolasiprogram.exe
