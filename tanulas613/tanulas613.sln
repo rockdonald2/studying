@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tanulas613", "tanulas613\tanulas613.vcxproj", "{84DEEB27-E88B-414C-A967-3A560A9AA58C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84DEEB27-E88B-414C-A967-3A560A9AA58C}.Debug|x64.ActiveCfg = Debug|x64
+		{84DEEB27-E88B-414C-A967-3A560A9AA58C}.Debug|x64.Build.0 = Debug|x64
+		{84DEEB27-E88B-414C-A967-3A560A9AA58C}.Debug|x86.ActiveCfg = Debug|Win32
+		{84DEEB27-E88B-414C-A967-3A560A9AA58C}.Debug|x86.Build.0 = Debug|Win32
+		{84DEEB27-E88B-414C-A967-3A560A9AA58C}.Release|x64.ActiveCfg = Release|x64
+		{84DEEB27-E88B-414C-A967-3A560A9AA58C}.Release|x64.Build.0 = Release|x64
+		{84DEEB27-E88B-414C-A967-3A560A9AA58C}.Release|x86.ActiveCfg = Release|Win32
+		{84DEEB27-E88B-414C-A967-3A560A9AA58C}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {775D672E-BA56-4819-B9A6-2A4FB10DEAE7}
+	EndGlobalSection
+EndGlobal
