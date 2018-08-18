@@ -1,3 +1,6 @@
-﻿  pelda.cpp
-c:\users\rockd\documents\github\studying\tanulas104\tanulas104\pelda.cpp(156): warning C4715: 'CarLot::getCar': not all control paths return a value
+﻿  stdafx.cpp
+  pelda.cpp
+  tanulas104.cpp
+  Generating Code...
+c:\users\rockd\documents\github\studying\tanulas104\tanulas104\pelda.cpp(157): warning C4715: 'CarLot::getCar': not all control paths return a value
   tanulas104.vcxproj -> C:\Users\rockd\Documents\GitHub\studying\tanulas104\Debug\tanulas104.exe
