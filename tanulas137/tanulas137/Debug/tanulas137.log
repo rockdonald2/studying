@@ -1,0 +1,5 @@
+﻿  pelda.cpp
+c:\users\rockd\documents\github\studying\tanulas137\tanulas137\pelda.cpp(111): error C3861: 'm_array': identifier not found
+  c:\users\rockd\documents\github\studying\tanulas137\tanulas137\pelda.cpp(116): note: see reference to class template instantiation 'StaticArray<char,size>' being compiled
+  tanulas137.cpp
+  Generating Code...
