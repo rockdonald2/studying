@@ -1,0 +1,4 @@
+﻿  coderbyte1.cpp
+c:\users\lukács zsolt\documents\github\studying\coderbyte1\coderbyte1\coderbyte1.cpp(30): warning C4018: '<': signed/unsigned mismatch
+c:\users\lukács zsolt\documents\github\studying\coderbyte1\coderbyte1\coderbyte1.cpp(43): warning C4018: '<': signed/unsigned mismatch
+  coderbyte1.vcxproj -> C:\Users\Lukács Zsolt\Documents\GitHub\studying\coderbyte1\Debug\coderbyte1.exe
