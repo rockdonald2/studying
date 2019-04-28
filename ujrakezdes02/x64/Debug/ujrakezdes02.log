@@ -1,0 +1,3 @@
+﻿  ujrakezdes02.cpp
+ujrakezdes02.obj : error LNK2019: unresolved external symbol "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl fileData(class std::istream_iterator<char,char,struct std::char_traits<char>,__int64>,class std::istream_iterator<char,char,struct std::char_traits<char>,__int64> (__cdecl*)(void))" (?fileData@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$istream_iterator@DDU?$char_traits@D@std@@_J@2@P6A?AV32@XZ@Z) referenced in function main
+C:\Users\Lukács Zsolt\Documents\GitHub\studying\ujrakezdes02\x64\Debug\ujrakezdes02.exe : fatal error LNK1120: 1 unresolved externals

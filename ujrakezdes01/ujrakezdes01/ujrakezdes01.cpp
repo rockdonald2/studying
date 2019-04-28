@@ -1,6 +1,4 @@
-﻿#include "pch.h"
-
-/*int main()
+﻿/*int main()
 {
 	int x{ 0 }, y{ 0 };
 
@@ -2474,7 +2472,7 @@ int main(void)
 }*/
 
 
-#include <iostream>
+/*#include <iostream>
 #include <array>
 #include <string>
 #include <cstdlib>
@@ -2483,7 +2481,7 @@ int main(void)
 #include <cassert>
 #include <exception>
 #include <fstream>
-#include <stdio.h>
+#include <stdio.h>*/
 
 // kártyajáték
 /*class gameException : public std::exception
@@ -2769,7 +2767,7 @@ int main(void)
 	return 0;
 }*/
 
-using namespace std;
+/*using namespace std;
 
 // Helper function for textual date and time.
 // DTTMSZ must allow extra character for the null terminator.
@@ -3205,6 +3203,347 @@ int main(void)
 		std::cout << e.what();
 		l_errorLog.writeLog(e.logMessage());
 	}
+
+	return 0;
+}*/
+
+
+
+
+///
+
+/*#include <iostream>
+#include <cstdlib>
+
+class GamePlay {
+
+private:
+	static const int NumTurns = 5; // ez által lekorlátoztuk a változó scopeját csak a classra, és csakis egyetlen másolat készül belőle.
+	// ez egy deklaráció, nem egy definició, általában minden amit írunk először igényel egy definíciót, de a class-specifikus const-ok amelyek static-ok is egyben,
+	// valamint az integral típusok kivételek.
+	// de ha mégis szükség van egy definícióra, pl. ha lekéred a címét, vagy más miatt akkor lenti példa alapján kell létrehozni
+	// azonban nem mindig ez a syntax, van amikor létrehozod a definíciót, de akkor adod meg a kezdeti értéket, és a class-ba már nem írod.
+
+	// a következő trükk az "ENUM HACK", azaz egy enum-ba zárjuk a változónkat, így használhatjuk arrayok esetében, amikor a compiler szükségelteti az array méretét
+	// pl:
+	enum { _NumTurns = 5};
+	// ez által a NumTurns egy symbolic name az 5-höz.
+
+	int scores[NumTurns];
+
+
+	// ...
+};
+
+const int GamePlay::NumTurns;
+
+
+class CTextBlock {
+public:
+	// ...
+
+	std::size_t length() const;
+
+private:
+	char* pText;
+
+	mutable std::size_t textLength;
+	mutable bool lengthIsValid;
+		// ezek a tagok akármikor változtathatók, még const tag funkcióban is.
+
+	const char& operator[](std::size_t position) const {
+		// ..
+
+		return pText[position];
+	}
+
+	char& operator[](std::size_t position) {
+
+		return (const_cast<CTextBlock&>(static_cast<const CTextBlock&>(*this))[position]);
+		// ebben az esetben, hogy elkerüljük a kóddublikációt, átalakítjuk a non-const objectet consttá a static_cast-al, hogy a const operator[] hívodjon le,
+		// majd a const_cast-al kitőrüljük a const-ot a const operator[] return értékéből.
+	}
+};
+
+std::size_t CTextBlock::length() const
+{
+	return textLength;
+}
+
+int main(void)
+{
+	// ha egy classon belül azt szeretnénk, hogy egy const tag változóból csak egyetlen darab készüljön --> static, lásd fennebb
+
+	return 0;
+}*/
+
+/*************
+
+Átfogó jegyzet - Effective C++
+
+Const
+1. Egyszerű constok esetében, használd a const objecteket vagy az enum hack-et #define-ok helyett.
+2. Funkcióhoz hasonlító makrókhoz, használd az inline funkciókat a #define helyett
+3. Valamit const-ként meghatározva a compiler segít használati hibákat szűrni, a const határozó bármely objecthez használható bármely scopeon, funkció paraméterekhez is, és return
+	típusoknál is, de akár egészben tag funkciókhoz is.
+4. A compilerek a bitwise constness szabályát biztosítják, de a programjaidat a conceptual constness szerint határozd meg
+5. Amikor a const és a non-const tag funkcióknak lényegében megegyező beépítésük van, a kóddublikációt úgy tudod kiszűrni, hogy a non-const változat a const változatot hívja le.
+
+Konstruktőr-Destruktőr-Másoló funkciók
+6. Minden beépített adattípust manuálisan inicializálj.
+7. Konstruktőrben, használd a member initialization list-et a bodyban végrehajtott assignment helyett. A member initialization list-ben a paraméterek sorrendjen egyezzen meg
+	a meghatározásuk sorrendjével.
+8. Kerüld el az inicializació sorrend problémákat a 'translation unit'-ok közt, az által, hogy a non-local static objecteket lecseréled local static objectekkel.
+9. A compilerek talán maguktól létrehoznak egy alapértelmezett konstruktőrt, egy másolás konstruktőrt és egy másolás hozzárendelési operator=-t, és egy destruktőrt.
+10. Hogy letiltsd ezt az automatikus funkcionalítást a compilereknek, deklaráld a megfelelő tag funkciókat private-ban, és ne határozz meg nekik beépítést.
+11. Polimorfikus base classok esetében mindig virtuális destruktőröket határozz meg. Ha egy classnak van akár egy virtuális funkciója is, akkor kell tartalmazzon egy virtuális
+	destruktőrt is.
+12. Classok amelyeket nem úgy terveztek, hogy base classok legyen(nincs virtuális destruktőrük), vagy nincsenek felkészítve a polimorfizmushoz nem szabad, hogy virtuális destruktőrjük
+	legyen.
+13. Destruktőröknek sosem szabadna kivételt dobniuk, ha egy funkció hívás egy destruktőrben dobhat, akkor a destruktőrnek el kell kapnia a kivételt, és elnyelnie 
+	vagy leállítania a programot.
+14. Ha a class klienseknek reagálniuk kell egy kivételre egy művelet során, a classnak biztosítania kell egy rendes funkciót ami végrehajtja a műveletet.
+15. Sose hívj le virtuális funkciókat konstrukció, vagy destrukció közben, mert az ilyen hívások sosem jutnak annál a származtatási szintnél tovább, mint a jelenleg zajló
+	konstruktőr vagy destruktőr.
+16. Az operator= mindig visszakellene térítsen egy *this hivatkozást.
+17. Gondoskodj arról, hogy az operator= megfelelően viselkedik önhozzárendelés esetén is: megoldási technikák közé tartozik a címek összehasonlítása, az óvatos állításrendezés,
+	és akár a copy-and-swap technika.
+18. Bizonyosodj meg róla, hogy bármely funkció amely több mint egy objecten dolgozik megfelelően viselkedik ha kettő vagy több object megegyezik.
+19. Másoló funkcióknak(konstruktőr, és operator=) egy object minden adat tagját és base class részét másolnia kell.
+20. Ne probáld meg beépíteni az egyik másoló funkciót a másik használatával, hanem hozz létre egy közös funkcionalítást egy harmadik funkció hívásban, ami private és 'init'.
+
+Erőforrás-kezelés
+21. Hogy megelőzd az erőforrás leakeket használj RAII objecteket amelyek megszerzik az erőforrást a konstruktőrjeikben és felszabadítják a destruktőrjeikben.
+22. Két hasznos RAII class a unique_ptr és a shared_ptr, a shared_ptr a leghasznosabb hiszen intuitív módon mükődik a másolása.
+23. Egy RAII object másolása maga után vonja az erőforrások másolását is amelyet kezel, szóval az erőforrás másolási viselkedése meghatározza a RAII object másolási viselkedését.
+24. Gyakori RAII class másolási viselkedések: a másolás tiltása, a hivatkozások számolásának végrehajtása(shared_ptr), de más viselkedések is vannak, pl. hagyományos másolás,
+	vagy unique_ptr alapján való másolás.
+25.	Az API-k gyakran elkell érjék a nyers mutatókat, tehát mindegyik RAII classnak tartalmaznia kellene egy lehetőséget, hogy elérjük az erőforrást amit kezel.
+26. Ez az elérés lehet explicit vagy implicit átalakítás, általánosságban nézve az explicit biztonságosabb, azonban az implicit kényelmesebb és egyértelműbb a felhasználoknak.
+27. Ha használod a []-t egy new kifejezésben, használnod kell [] a hozzátartozó delete kifejezésben is. Ha nem használod, akkor a delete kifejezésben sem kell használnod.
+28. New-elt objecteket külön állításokba raktározd smart pointerekbe. Ennek az elhibázása erőforrás leakekhez vezethet amikor kivételek dóbododnak.
+
+Interfész design
+29. A jó interfészeket könnyű helyesen használni és nehéz helytelenül. Törekedned kell erre a karakterisztikákra mindegyik interfészedben.
+30. A helyes mód ahhoz, hogy megkönnyítsd a helyes használatát az, hogy konzisztenciát épitesz ki az interfészeidben, és viselkedési kompatibilitást a beépített adattípusokkal.
+31. Módok arra, hogy megelőzd a hibákat: új típusok létrehozása, műveletek korlátozása a típusokon, korlátozod a object értékeket, és felszabadítod a klienseket az erőforrás kezelés
+	felelőssége alól.
+32. A shared_ptr támogat testreszabott 'deleter'-et, ez megelőzi a 'Cross-DLL' problémát, és használható arra, hogy automatikusan felnyissa a mutexeket, stb.
+33. A class designeolás type designeolás is egyben. Mielőtt meghatározol egy új típust, ellenőrízd le a kérdéseket az 'ITEM 18'-ból. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+34. Preferáld a pass-by-reference-to-const-ot a pass-by-value helyett, általában hatékonyabb és megelőzi a 'slicing' problémát.
+35. A fenti szabály nem vonatkozik a beépített típusokra, STL iterátorokra, és funkció object típusokra, számukra a pass-by-value megfelelő.
+36. Sose teríts egy mutatót vagy hivatkozást egy helyi stack objectre, egy hivatkozást egy heap-elhelyezett objectre, vagy egy mutatót/hivatkozást egy helyi static objectre, ha több mint
+	egy olyan objectre lenne szükség.
+37. Az adattagokat private-ként határozd meg, ez által a klienseknek szintaktikailag egyforma elérést ad az adathoz, megfelelő hozzáférési kontrollt enged meg, megőrízhetők a class
+	állandók, és biztosít class szerzői beépítési rugalmasságot.
+38. A protected nem sokkal jobban 'encapsulated' mint a public.
+39. Preferáld a nem-tag nem-friend funkciókat a tag funkciók helyett. Ezzel növeled az 'encapsulation'-t, a 'becsomagolási' rugalmasságot, és a funkciónális kiterjeszthetőséget.
+40. A szükséged van típus átalakításra mindegyik paraméterre egy funkcióhoz, a funkciónak muszáj nem-tag-nak lennie.
+41. Biztosíts egy swap tag funkciót amikor az std::swap nem eléggé hatékony a saját típusodhoz. Bizonyosodj meg róla, hogy a swap funkciód nem dob kivételt!
+42. Ha biztosítasz egy swap tag funkciót, akkor biztosíts egy nem-tag swap funkciót is amely lehívja a tag funkciót. Classoknak(nem templatek) specializáld az std::swap-ot is.
+43. Amikor lehívod a swap-ot, alkalmazz egy using deklarációt std::swap-ra, majd hívd a swap-ot bármilyen namespace határozó nélkül.
+44. Tökéletesen rendben van az ha std templateket teljesen specializálsz általad meghatározott típusokra, de sose próbálj meg bármit is hozzáadni(újra értendő) az std-hez!
+
+Beépítés(implementálás)
+45. Halaszd el a változó definicíót ameddig csak lehet. Növeli a program átláthatóságot, a program hatékonyságát.
+46. Kerüld el a cast-okat bármikor amikor lehetséges, főleg a dynamic_cast-okat a teljesítmény-érzékeny kódokban. Ha a designnak szüksége van castra, próbálj meg cast-mentes alternatívát
+	létrehozni.
+47. Bármikor amikor a cast-olás szükséges, próbáld elrejteni egy funkción belül, aztán a kliensek lehívhatják a funkciót ahelyett, hogy saját cast-ot raknánk a kódjukba.
+48. Preferáld a C++-style cast-okat a C-style castok helyett. Könnyebb őket használni, és sokkal több részletet elárulnak arról, hogy mit is csinálnak.
+49. Kerüld el, hogy 'handles'-ket téritesz(legyen az hivatkozás, mutató, vagy iterátor) object belső adattagokra. Növeli az 'encapsulation'-t, segít a const tag funkcióknak
+	valóban const-ként viselkedniük, és minimalizálja a logó 'handles'-ek létrehozásának lehetőségét.
+50. Kivétel-biztonságos funkciók semmilyen erőforrást nem szivárogtatnak, nem teszik lehetővé, hogy adatstrukturák kárósodjanak, még akkor is ha kivételek dóbodnak.
+	Ilyen funkciók alapszintű, erős, vagy nothrow garanciát biztosítanak.
+51. Az erős garancia gyakran a copy-and-swap technikával van beépítve, de az erős garancia nem minden funkció számára megvalósítható.
+52. Egy funkció nem biztosíthat nagyobb garanciát mint a legkisebb garanciát biztosító funkció amit lehív.
+53. Limitált a legtöbb inline funkciódat rövid, gyakran használt funkciókra. Ez elősegíti a debuggolást és a bináris fejleszthetőséget, csökkenti a potenciális kódbloat lehetőségét,
+	és maximalizálja a nagyobb program sebességet.
+54. Ne deklaráld funkció templateket inline-nak csak azért mert header fileban jelennek meg.
+55. Az általános ötlet az összeállítási egymástól való függőség mögött az, hogy deklarációkra legyünk függésbe, és ne definíciókra. Két megjelenési formája van: Handle és interface class.
+56. A Library header fájlok teljes és csak-deklaráció formában kellene létezzenek. Ez érvényes akkor is ha van template használva.
+
+Származtatás és OOP
+57. A publikus származtatás egy 'is-a' kapcsolatot feltételez. Minden ami érvényes a Base classra, az muszáj érvényes legyen a származtatott classokra is, mert minden Derived object
+	egy Base object is egyben.
+58. A nevek a származtatott classokban elrejtik a Base class neveit. Publikus származtatás esetén, ez sosem kívánatos.
+59. Ahhoz, hogy rejtett neveket újra láthatóvá tegyél, használd a using deklarációt, vagy a 'forwarding function' metódust.
+60. Az interfész származtatása különbözik a beépítés származtatásától. Publikus származtatás alatt a származtatott classok mindig öröklik a base class interfészeket.
+61. Pure virtual funkciók meghatározzák csak a származtatási interfészt.
+62. A sima virtual funkciók meghatározzák a származtatási interfészt, plusz egy alapértelmezett implementálását a funkcionalításnak.
+63. A nem-virtuális funkciók meghatározzák a származtatási interfészt, plusz a kötelező implementálását a funkcionalításnak.
+64. Virtuál funkció alternatívák közé sorolható az NVI idiom használata, és a Strategy design különböző formái.
+65. A hátránya annak, hogy tag funkció funkcionalítását mozgatjuk a classon kivül egy nem-tag funkcióba az, hogy az utóbbi funkció nem rendelkezik eléréssel a nem-publikus tagokhoz.
+66. a 'function' objectek úgy viselkednek mint általánosított funkció mutatók, ezzek az objectek képesek támogatni bármely lehívható kompatibilis entitást, amely a megadott signature-el
+	rendelkezik. (return type és paraméterek, stb.)
+67. Sose határozz újra egy származtatott nem-virtuális funkciót!
+68. Sose határozz újra egy származtatott alapértelmezett paramétert, mert az alapértelmezett paraméter értékek statikus boundok, míg a virtuális funkciók dinamikus boundok.
+69. A kompozíciónak teljesen más értelmei vannak, mint a publikus származtatásnak.
+70. Az alkalmazási domainben, a kompozíció 'has-a' kapcsolatot jelent, míg a beépítési domainben egy 'is-implemented-in-terms-of' kapcsolatot.
+71. A privát származtatás egy 'is-implemented-in-terms-of' kapcsolatot feltételez, alárendelt változata a kompozíciósnak, és akkor van értelme, ha egy származtatott classnak
+	elérésre van szüksége egy base class taghoz, vagy újra kell határozzon egy származtatott virtuális funkciót.
+72. Nem úgy mint a kompozíció, a privát származtatás lehetővé teszi az 'empty base optimization'-t(EBO), ez fontos lehet könyvtár fejlesztőknek akik minimalizálni 
+	akarják az object méretet.
+73. A több classtól történő származtatás sokkal összetetebb az egy classtól történő származtatásnál. Új kétértelműség problémákhoz vezethet és a virtuális származtatás szükségéhez.
+74. A virtuális származtatás magával hordoz méretbeli, sebességbeli árakat, valamint komplexebbé teszi az inicializálási és hozzárendelési folyamatokat. Akkor a legpraktikusabb, ha
+	a virtuális base class nem tartalmaz semmilyen adatot.
+75. A több classtól történő származtatásnak van valódi létjogosultsága. Egyik ilyen, az a helyzet amikor kombinálunk úgy, hogy egyik felől publikusan egy Interface classból,
+	majd privátan egy másik classból, amelyik segít a beépítésben.
+
+Template-k, és a generikus programozás
+76. Mind a classok, mind a template-k támogatják az interfészt, illetve a polimorfizmust.
+77. Classok számára az interfészek explicit jellegűek, és a funkció signature-re vannak központosítva. A polimorfizmus pedig runtime során jelenik meg virtuális funkciókon keresztül.
+78. Template paraméterek esetében, az interfészek implicit jellegűek és érvényes kifejezésekre vannak alapozva. A polimorfizmus az összeállítás során jelenik meg, amikor
+	példázzuk a template-t, és megoldjuk a funkció overloadolási döntést(overloadolva van-e az operátor vagy sem).
+79. Amikor template paramétereket deklarálunk, a class és a typename kulcsszók felcserélhetők.
+80. Használd a typename-t, hogy azonosíts 'nested dependent type' neveket, kivéve a base class listában(származtatás), vagy kivéve mint base class azonosító
+	member initialization list-ben.
+81. Származtatott class template-kben, hivatkozz nevekre a base class template-ből a 'this->' prefix-el, a using deklarációval, vagy egy explicit base class kvalifikációval.
+82. A templatek több classot és több funkciót generálnak, tehát bármely kód amely nem függ a template paramétertől bloat-ot okoz.
+83. A non-type template paraméterek által okozott bloat-okat kilehet szűrni úgy, hogy lecseréljük a template paramétereket funkció paraméterekkel, vagy class adattagokkal.
+84. A template paraméterek által okozott bloat-okat lelehet csökkenteni úgy, hogy megosztjuk a beépítést olyan példáztatási típusok között amelyek azonos binárikus ábrázolással rendelkeznek.
+85. Használj template tag funkciókat ahhoz, hogy olyan funkciókat generálj amely bármely kompatibilis típussal műkődnek.
+86. Ha tag templateket deklarálsz általánosított copy konstrukcióhoz, vagy hozzárendeléshez, akkor úgyanúgy deklarálnod kell normális változatokat is ezekből.
+87. Amikor olyan class template-t írsz amely biztosít egy olyan funkciót amely felhasználja a template-t és támogatja az implicit típus átalakítást, határozd meg ezt
+	a funkciót friend formában a class templaten belül.
+88. A jellemvonás(traits) classok információt nyújtanak típusokról amelyek elérhetők kompiláció során. Template-k és template specializálás segítségével vannak beépítve.
+89. Az overloadolással körülfogva, a traits classok lehetővé teszik, hogy végrehajtsunk compile-time if...else teszteket típusokon.
+90. A TMP átválthatja a munkát runtime-ról, compile-time-ra, ez által lehetővé téve, hogy korábban vegyünk észre híbákat, és nagyobb runtime teljesítményt érjünk el.
+91. A TMP használható arra, hogy testreszabott kódot hozzunk létre különböző politika választások kombinációjára alapozva, és arra is használható, hogy elkerüljük olyan kód
+	létrehozását amely nem megfelelő bizonyos típusokhoz.
+
+A new és delete testreszabása
+92. A 'set_new_handler' lehetővé teszi számodra, hogy olyan funkciót határozz meg amely lehívódik, ha a memória allokáció sikertelen.
+93. A 'nothrow new' operátor korlátozott hasznosággal bír, mert csak a memória allokációra vonatkozik, az utána következő konstruktőr attól
+	még úgyanúgy dobhat kivételt.
+94. Számos valid oka van annak, hogy valaki testreszabott változatokat készit a new és deleteből, beleértve a teljesítménynövekedést, a 'heap usage
+	error'-ok debuggolása, és 'heap usage' információ gyűjtése.
+95. Az operátor 'new'-nak tartalmaznia kell egy végtelen loop-ot amely megpróbálja elhelyezni a memóriát, miközben lehívja a new-handler funkciót
+	ha nem tudja teljesíteni a memória kérést, és kezelnie kell a zero byte-ra történő kéréseket. A class-specifikus változatoknak kezelniük kell
+	a kéréseket nagyobb blockokra mint amit elvárnak.
+96. Az operátor 'delete'-nek nem szabad semmit sem tennie ha a beadott mutató null. A class-specifikus változatok pedig nagyobb blockokat kellene
+	kezelniük mint amit elvárnak.
+97. Amikor egy helyettesítő(placement) változatot írsz az operátor new-ról, bizonyosodj meg róla, hogy a hozzá illő helyettesítő operátor delete-t is írsz.
+	Ha ezt nem teszed meg, a programodba tapasztalhatsz apró, időszakos memória leak-ket.
+98. Amikor deklarálod a helyettesítő változatát a new-nak és delete-nek, bizonyosodj meg róla, hogy nem szándékosan de nem-e rejtetted el a normál
+	verzióit ezeknek az operátoroknak.
+
+Egyéb
+99. Vedd komolyan a compiler által dobott figyelmeztetéseket, és törekedj arra, hogy olyan programokat alkoss amelyek figyelmeztetés nélkül lefutnak, a legnagyobb figyelmeztetési
+	szinten is.
+100. Ne függj a compiler figyelmeztetéseken, mert különböző compilerek különböző dolgokra figyelmeztetnek. Ha átváltasz egy másik compilerre az eltörölhet olyan figyelmeztetéseket,
+	amelyekre korábban hagyatkoztál.
+
+
+
+
+/////////////////////////
+
+	Átfogó jegyzet - Effective STL
+
+Containers
+1. 
+
+*************/
+
+// kapcsolódnak a fenti jegyzethez
+/*class FontHandle {};
+
+class Font
+{
+public:
+	operator FontHandle() {}
+};
+
+
+
+#include <fstream>
+#include <iostream>
+#include <string>
+
+void logCall(const std::string& logMessage)
+{
+	static std::ofstream log("log.txt", std::ios::app);
+	log << logMessage;
+}
+
+// TMP factorial
+template <unsigned n>
+struct Factorial
+{
+	enum { value = n * Factorial<n-1>::value };
+};
+
+template<>
+struct Factorial<0>
+{
+	enum { value = 1 };
+};
+
+int main()
+{
+	std::cout << Factorial<5>::value;
+
+	return 0;
+}
+*/
+
+/*#include <iostream>
+#include <SFML/Graphics.hpp>
+
+using namespace sf;
+int main()
+{
+	RenderWindow window(VideoMode(320, 480), "The game");
+
+	while (window.isOpen())
+	{
+		Event e;
+		while (window.pollEvent(e));
+		{
+			if (e.type == Event::Closed)
+				window.close();
+		}
+
+		window.clear(Color::White);
+		window.display();
+	}
+
+
+
+	return 0;
+}*/
+
+// comparison type for sets
+struct DereferenceLess 
+{
+	template <typename PtrType>
+	bool operator()(PtrType pT1, // parameters are passed by
+		PtrType pT2) const // value, because we expect them
+	{ // to be (or to act like) pointers
+		return *pT1 < *pT2;
+	}
+};
+
+#include <vector>
+#include <memory>
+#include <iterator>
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+	
+	ifstream file("sample.txt");
+
+	if (file)
+	{
+		file.unsetf(ios::skipws);
+		string fileData(istream_iterator<char>(file), istream_iterator<char>());
+
+		cout << fileData << '\n';
+	}
+	else
+		cout << "Couldn't be opened for copying\n";
 
 	return 0;
 }
