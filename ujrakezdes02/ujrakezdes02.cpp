@@ -39,10 +39,14 @@
 #include <algorithm>
 using namespace std;
 
-bool isDivisibleWith5(int number)
+template <typename argType>
+struct isDivisibleWith5 : unary_function<argType, bool>
 {
-	return ((number % 5) == 0);
-}
+	bool operator()(int& number)
+	{
+		return ((number % 5) == 0);
+	}
+};
 
 int main()
 {
@@ -64,10 +68,10 @@ int main()
 	// partition data, number divisible with 5 precedes any other
 	IVCi goodEnd;
 	for (unsigned int i = 0; i < data.size(); ++i)
-		goodEnd = partition(data.begin(), data.end(), isDivisibleWith5);
+		goodEnd = partition(data.begin(), data.end(), isDivisibleWith5<int>());
 
 	// erase number divisible with 5
-	data.erase(data.begin(), goodEnd);
+	data.erase(goodEnd, data.end());
 
 	// print the IVC
 	cout << '\n';

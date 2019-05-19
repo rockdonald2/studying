@@ -1850,540 +1850,540 @@ int main()
 //	}
 //};
 //
-//class MatrixException : public std::exception
-//{
-//private:
-//	std::string m_error;
-//
-//public:
-//	MatrixException(std::string error) : m_error(error)
-//	{}
-//
-//	const char* what() const noexcept { return m_error.c_str(); }
-//};
-//
-//class Matrix
-//{
-//private:
-//	int m_rows = 3;
-//	int m_columns = 3;
-//	double(*m_matrix)[3] = new double[3][3];
-//
-//	// special case to display accurately determinant
-//	double Sdeterminant()
-//	{
-//		double determinant{ 0 };
-//		return determinant = ((this->m_matrix[0][0] * this->m_matrix[1][1]) - (this->m_matrix[0][1] * this->m_matrix[1][0]));
-//	}
-//
-//public:
-//	Matrix()
-//	{
-//		std::cout << "Enter the number of rows: ";
-//		std::cin >> m_rows;
-//		std::cout << "Enter the number of columns: ";
-//		std::cin >> m_columns;
-//
-//		int elem = 1;
-//		for (int i = 0; i < m_rows; ++i)
-//		{
-//			for (int j = 0; j < m_columns; ++j)
-//			{
-//				std::cout << "Enter the " << elem << ". element: ";
-//				std::cin >> m_matrix[i][j];
-//				++elem;
-//			}
-//		}
-//	}
-//	Matrix(int rows, int columns) : m_rows(rows), m_columns(columns)
-//	{
-//		assert(m_rows <= 3 && m_columns <= 3);
-//
-//		for (int i = 0; i < m_rows; ++i)
-//		{
-//			for (int j = 0; j < m_columns; ++j)
-//			{
-//				m_matrix[i][j] = 0;
-//			}
-//		}
-//	}
-//	Matrix(const Matrix &m) : m_rows(m.m_rows), m_columns(m.m_columns)
-//	{
-//		for (int i = 0; i < this->m_rows; ++i)
-//		{
-//			for (int j = 0; j < this->m_columns; ++j)
-//			{
-//				this->m_matrix[i][j] = m.m_matrix[i][j];
-//			}
-//		}
-//	}
-//	Matrix(const Matrix *m) : m_rows(m->m_rows), m_columns(m->m_columns)
-//	{
-//		for (int i = 0; i < this->m_rows; ++i)
-//		{
-//			for (int j = 0; j < this->m_columns; ++j)
-//			{
-//				this->m_matrix[i][j] = m->m_matrix[i][j];
-//			}
-//		}
-//	}
-//
-//	~Matrix() { delete[] m_matrix; }
-//
-//	bool isNull()
-//	{
-//		for (int i = 0; i < this->m_rows; ++i)
-//		{
-//			for (int j = 0; j < this->m_columns; ++i)
-//			{
-//				if (this->m_matrix[i][j] != 0)
-//					return false;
-//			}
-//		}
-//
-//		return true;
-//	}
-//	void edit()
-//	{
-//		std::cout << "Edit serial number syntax: \n";
-//		int elem{ 1 };
-//		for (int x = 0; x < this->m_rows; ++x)
-//		{
-//			std::cout << "( ";
-//			for (int y = 0; y < this->m_columns; ++y)
-//			{
-//				std::cout << elem++ << ' ';
-//			}
-//			std::cout << ")\n";
-//		}
-//		
-//		std::cout << '\n';
-//
-//		std::cout << "Enter the serial number of the element you want to edit: ";
-//		int element{ 0 };
-//		std::cin >> element;
-//
-//		std::cout << "Enter the new value: ";
-//		double value{ 0 };
-//		std::cin >> value;
-//
-//		int serial = 1;
-//		for (int i = 0; i < this->m_rows; ++i)
-//		{
-//			for (int j = 0; j < this->m_columns; ++j)
-//			{
-//				if (serial == element)
-//				{
-//					this->m_matrix[i][j] = value;
-//					return;
-//				}
-//				++serial;
-//			}
-//		}
-//	}
-//	int numberOfElements()
-//	{
-//		return this->m_rows*this->m_columns;
-//	}
-//
-//	friend std::ostream& operator<<(std::ostream &out, const Matrix &m)
-//	{
-//		for (int i = 0; i < m.m_rows; ++i)
-//		{
-//			out << "( ";
-//			for (int j = 0; j < m.m_columns; ++j)
-//			{
-//				out << m.m_matrix[i][j] << ' ';
-//			}
-//			out << ")\n";
-//		}
-//
-//		return out;
-//	}
-//	friend std::istream& operator>>(std::istream &in, Matrix &m)
-//	{
-//		int elem = 1;
-//		for (int i = 0; i < m.m_rows; ++i)
-//		{
-//			for (int j = 0; j < m.m_columns; ++j)
-//			{
-//				std::cout << "Enter the " << elem << ". element: ";
-//				in >> m.m_matrix[i][j];
-//				++elem;
-//			}
-//		}
-//
-//		return in;
-//	}
-//
-//	friend Matrix operator+(const Matrix &m1, const Matrix &m2)
-//	{
-//		if ((m1.m_rows != m2.m_rows) && (m1.m_columns != m2.m_columns))
-//			throw MatrixException("Invalid addition, different rows and columns");
-//
-//		Matrix _matrix(m2.m_rows, m2.m_columns);
-//
-//		for (int i = 0; i < _matrix.m_rows; ++i)
-//		{
-//			for (int j = 0; j < _matrix.m_rows; ++j)
-//				_matrix.m_matrix[i][j] = m1.m_matrix[i][j] + m2.m_matrix[i][j];
-//		}
-//
-//
-//		return _matrix;
-//	}
-//	friend Matrix operator-(const Matrix &m1, const Matrix &m2)
-//	{
-//		/*if ((m1.m_rows != m2.m_rows) && (m1.m_columns != m2.m_columns))
-//			throw MatrixException("Invalid subtraction, different rows and columns");
-//
-//		Matrix _matrix(m2.m_rows, m2.m_columns);
-//
-//		for (int i = 0; i < _matrix.m_rows; ++i)
-//		{
-//			for (int j = 0; j < _matrix.m_rows; ++j)
-//				_matrix.m_matrix[i][j] = m1.m_matrix[i][j] - m2.m_matrix[i][j];
-//		}
-//
-//
-//		return _matrix;*/
-//
-//		// vagy
-//
-//		return m1 + (-1 * m2);
-//	}
-//	friend Matrix operator*(const Matrix &m1, const Matrix &m2)
-//	{
-//		Matrix _matrix(m2.m_rows, m2.m_columns);
-//
-//		for (int i = 0; i < m2.m_rows; ++i)
-//		{
-//			for (int j = 0; j < m2.m_columns; ++j)
-//			{
-//				if (m2.m_columns <= m1.m_columns)
-//					for (int u = 0; u < m2.m_rows; ++u)
-//						_matrix.m_matrix[i][j] += m1.m_matrix[i][u] * m2.m_matrix[u][j];
-//				if (m1.m_columns != m2.m_rows)
-//					throw MatrixException("The number of columns in the first matrix should be equal to the number of rows in the second");
-//			}
-//		}
-//
-//		return _matrix;
-//	}
-//	friend Matrix operator*(int number, const Matrix &m)
-//	{
-//		Matrix _matrix(m.m_rows, m.m_columns);
-//
-//		for (int i = 0; i < _matrix.m_rows; ++i)
-//		{
-//			for (int j = 0; j < _matrix.m_columns; ++j)
-//			{
-//				_matrix.m_matrix[i][j] = number * m.m_matrix[i][j];
-//			}
-//		}
-//
-//		return _matrix;
-//	}
-//	Matrix operator=(const Matrix &m)
-//	{
-//		if (this == &m)
-//			return *this;
-//
-//		if ((this->m_rows == m.m_rows) && (this->m_columns == m.m_columns))
-//		{
-//			for (int i = 0; i < this->m_rows; ++i)
-//			{
-//				for (int j = 0; j < this->m_columns; ++j)
-//				{
-//					this->m_matrix[i][j] = m.m_matrix[i][j];
-//				}
-//			}
-//		}
-//		else
-//			throw MatrixException("Invalid assignment");
-//
-//		return *this;
-//	}
-//	friend Matrix operator^(Matrix &m, int power)
-//	{
-//		if (power == 1)
-//			return m;
-//
-//		if (power == 0)
-//		{
-//			if (m.m_columns == 1 && m.m_rows == 1)
-//			{
-//				Matrix _matrix(1, 1);
-//
-//				_matrix.m_matrix[0][0] = 1;
-//
-//				return _matrix;
-//			}
-//
-//			if (m.m_columns == 2 || m.m_rows == 2)
-//			{
-//				Matrix _matrix(2, 2);
-//
-//				for (int i = 0; i < _matrix.m_columns; ++i)
-//				{
-//					_matrix.m_matrix[i][i] = 1;
-//				}
-//
-//				return _matrix;
-//			}
-//
-//			if (m.m_columns == 3 || m.m_columns == 3)
-//			{
-//				Matrix _matrix(3, 3);
-//
-//				for (int i = 0; i < _matrix.m_columns; ++i)
-//				{
-//					_matrix.m_matrix[i][i] = 1;
-//				}
-//
-//				return _matrix;
-//			}
-//		}
-//
-//		if (power >= 2)
-//		{
-//			Matrix _matrix(m);
-//			for (int i = 2; i <= power; ++i)
-//				m = (m * _matrix);
-//		}
-//
-//		return m;
-//	}
-//
-//	double determinant()
-//	{
-//		if (this->m_rows != this->m_columns)
-//			throw MatrixException("Cannot take determinant of uneven matrix");
-//
-//		double determinant{ 0 };
-//		if (this->m_rows == 2 && this->m_columns == 2)
-//		{
-//			for (int i = 0; i < this->m_rows; ++i)
-//			{
-//				std::cout << "| ";
-//				for (int j = 0; j < this->m_columns; ++j)
-//				{
-//					std::cout << this->m_matrix[i][j] << ' ';
-//				}
-//				if (i < (this->m_rows - 1))
-//					std::cout << "|\n";
-//				else
-//					std::cout << "| = ";
-//			}
-//
-//			determinant = ((this->m_matrix[0][0] * this->m_matrix[1][1]) - (this->m_matrix[0][1] * this->m_matrix[1][0]));
-//		}
-//
-//		if (this->m_rows == 3 && this->m_columns == 3)
-//		{
-//			Matrix submatrix(2, 2);
-//			for (int x = 0; x < this->m_rows; x++) 
-//			{
-//				int subi = 0;
-//				for (int i = 1; i < this->m_columns; i++) 
-//				{
-//					int subj = 0;
-//					for (int j = 0; j < this->m_columns; j++) 
-//					{
-//						if (j == x)
-//							continue;
-//						submatrix.m_matrix[subi][subj] = this->m_matrix[i][j];
-//						subj++;
-//					}
-//					subi++;
-//				}
-//				determinant = determinant + (pow(-1, x) * this->m_matrix[0][x] * submatrix.Sdeterminant());
-//			}
-//
-//				for (int i = 0; i < this->m_rows; ++i)
-//				{
-//					std::cout << "| ";
-//					for (int j = 0; j < this->m_columns; ++j)
-//					{
-//						std::cout << this->m_matrix[i][j] << ' ';
-//					}
-//					if (i < (this->m_rows - 1))
-//						std::cout << "|\n";
-//					else
-//						std::cout << "| = ";
-//				}
-//		}
-//
-//		return determinant;
-//	}
-//
-//	int rank()
-//	{
-//		int rank{ 3 };
-//
-//		// speciális esetek
-//		if (this->isNull())
-//			return rank - 3;
-//		if (this->m_rows == 2 && this->m_columns == 1)
-//			return rank - 2;
-//		if (this->m_rows == 3 && this->m_columns == 1)
-//			return rank - 2;
-//		if (this->m_rows == 1 && this->m_columns == 2)
-//			return rank - 2;
-//		if (this->m_rows == 1 && this->m_columns == 3)
-//			return rank - 2;
-//		
-//		// normál eset
-//		if (this->determinant() == 0)
-//		{
-//			if (this->m_rows == 3 && this->m_columns == 3)
-//			{
-//				if (this->isNull())
-//					return rank - 3;
-//
-//				Matrix submatrix(2, 2);
-//				for (int x = 0; submatrix.determinant() == 0; x++)
-//				{
-//					int subi = 0;
-//					for (int i = 1; i < this->m_columns; i++)
-//					{
-//						int subj = 0;
-//						for (int j = 0; j < this->m_columns; j++)
-//						{
-//							if (j == x)
-//								continue;
-//							submatrix.m_matrix[subi][subj] = this->m_matrix[i][j];
-//							subj++;
-//						}
-//						subi++;
-//					}
-//				}
-//
-//				if (submatrix.determinant() != 0)
-//					return rank - 1;
-//
-//				if (submatrix.determinant() == 0)
-//				{
-//					if (!(this->isNull()))
-//						return rank - 2;
-//					else
-//						return rank - 3;
-//				}
-//			}
-//
-//			if (this->m_rows == 2 && this->m_columns == 2)
-//				if (!(this->isNull()))
-//					return rank - 2;
-//				else
-//					return rank - 3;
-//
-//		}
-//		else
-//		{
-//			if (this->m_rows == 3 && this->m_columns == 3)
-//				return rank;
-//			if (this->m_rows == 2 && this->m_columns == 2)
-//				return rank - 1;
-//			if (this->m_rows == 1 && this->m_columns == 1)
-//				return rank - 2;
-//		}
-//
-//		throw MatrixException("Problem with rank");
-//	}
-//
-//	Matrix transponalt()
-//	{
-//		Matrix _matrix(this);
-//
-//		for (int i = 0; i < this->m_rows; ++i)
-//		{
-//			for (int j = 0; j < this->m_columns; ++j)
-//			{
-//				_matrix.m_matrix[i][j] = this->m_matrix[j][i];
-//			}
-//		}
-//
-//		return _matrix;
-//	}
-//	Matrix coFactor(int p, int q)
-//	{
-//		Matrix submatrix(2, 2);
-//
-//		int i = 0, j = 0;
-//		for (int row = 0; row < this->m_rows; row++)
-//		{
-//			for (int col = 0; col < this->m_columns; col++)
-//			{
-//				if (row != p && col != q)
-//				{
-//					submatrix.m_matrix[i][j++] = this->transponalt().m_matrix[row][col];
-//
-//					if (j == this->m_rows - 1)
-//					{
-//						j = 0;
-//						i++;
-//					}
-//				}
-//			}
-//		}
-//
-//		return submatrix;
-//	}
-//	Matrix adjoint()
-//	{
-//		if (this->m_rows != this->m_columns)
-//			throw MatrixException("Invalid adjungalt: uneven matrix");
-//
-//		Matrix _matrix(this);
-//
-//
-//		if (this->m_rows == 2 && this->m_columns == 2)
-//		{
-//			int x = 1;
-//			for (int i = 0; i < this->m_rows; ++i)
-//			{
-//				int y = 1;
-//				for (int j = 0; j < this->m_columns; ++j)
-//				{
-//					_matrix.m_matrix[i][j] = pow(-1, i+j) * this->transponalt().m_matrix[x][y];
-//					--y;
-//				}
-//				--x;
-//			}
-//		}
-//
-//		if (this->m_rows == 3 && this->m_columns == 3)
-//		{
-//			for (int i = 0; i < this->m_rows; ++i)
-//			{
-//				for (int j = 0; j < this->m_columns; ++j)
-//				{
-//					_matrix.m_matrix[i][j] = pow(-1, i+j) * (this->coFactor(i, j).determinant());
-//				}
-//			}
-//		}
-//
-//		return _matrix;
-//	}
-//	Matrix invert()
-//	{
-//		if (this->determinant() == 0)
-//			throw MatrixException("Determinant = 0, matrix is not invertible");
-//
-//		Matrix _matrix(this);
-//
-//		for (int i = 0; i < this->m_rows; ++i)
-//		{
-//			for (int j = 0; j < this->m_columns; ++j)
-//			{
-//				_matrix.m_matrix[i][j] = ((1 / this->determinant()) * this->adjoint().m_matrix[i][j]);
-//			}
-//		}
-//
-//		return _matrix;
-//	}
-//};
-//
+class MatrixException : public std::exception
+{
+private:
+	std::string m_error;
+
+public:
+	MatrixException(std::string error) : m_error(error)
+	{}
+
+	const char* what() const noexcept { return m_error.c_str(); }
+};
+
+class Matrix
+{
+private:
+	int m_rows = 3;
+	int m_columns = 3;
+	double(*m_matrix)[3] = new double[3][3];
+
+	// special case to display accurately determinant
+	double Sdeterminant()
+	{
+		double determinant{ 0 };
+		return determinant = ((this->m_matrix[0][0] * this->m_matrix[1][1]) - (this->m_matrix[0][1] * this->m_matrix[1][0]));
+	}
+
+public:
+	Matrix()
+	{
+		std::cout << "Enter the number of rows: ";
+		std::cin >> m_rows;
+		std::cout << "Enter the number of columns: ";
+		std::cin >> m_columns;
+
+		int elem = 1;
+		for (int i = 0; i < m_rows; ++i)
+		{
+			for (int j = 0; j < m_columns; ++j)
+			{
+				std::cout << "Enter the " << elem << ". element: ";
+				std::cin >> m_matrix[i][j];
+				++elem;
+			}
+		}
+	}
+	Matrix(int rows, int columns) : m_rows(rows), m_columns(columns)
+	{
+		assert(m_rows <= 3 && m_columns <= 3);
+
+		for (int i = 0; i < m_rows; ++i)
+		{
+			for (int j = 0; j < m_columns; ++j)
+			{
+				m_matrix[i][j] = 0;
+			}
+		}
+	}
+	Matrix(const Matrix &m) : m_rows(m.m_rows), m_columns(m.m_columns)
+	{
+		for (int i = 0; i < this->m_rows; ++i)
+		{
+			for (int j = 0; j < this->m_columns; ++j)
+			{
+				this->m_matrix[i][j] = m.m_matrix[i][j];
+			}
+		}
+	}
+	Matrix(const Matrix *m) : m_rows(m->m_rows), m_columns(m->m_columns)
+	{
+		for (int i = 0; i < this->m_rows; ++i)
+		{
+			for (int j = 0; j < this->m_columns; ++j)
+			{
+				this->m_matrix[i][j] = m->m_matrix[i][j];
+			}
+		}
+	}
+
+	~Matrix() { delete[] m_matrix; }
+
+	bool isNull()
+	{
+		for (int i = 0; i < this->m_rows; ++i)
+		{
+			for (int j = 0; j < this->m_columns; ++i)
+			{
+				if (this->m_matrix[i][j] != 0)
+					return false;
+			}
+		}
+
+		return true;
+	}
+	void edit()
+	{
+		std::cout << "Edit serial number syntax: \n";
+		int elem{ 1 };
+		for (int x = 0; x < this->m_rows; ++x)
+		{
+			std::cout << "( ";
+			for (int y = 0; y < this->m_columns; ++y)
+			{
+				std::cout << elem++ << ' ';
+			}
+			std::cout << ")\n";
+		}
+		
+		std::cout << '\n';
+
+		std::cout << "Enter the serial number of the element you want to edit: ";
+		int element{ 0 };
+		std::cin >> element;
+
+		std::cout << "Enter the new value: ";
+		double value{ 0 };
+		std::cin >> value;
+
+		int serial = 1;
+		for (int i = 0; i < this->m_rows; ++i)
+		{
+			for (int j = 0; j < this->m_columns; ++j)
+			{
+				if (serial == element)
+				{
+					this->m_matrix[i][j] = value;
+					return;
+				}
+				++serial;
+			}
+		}
+	}
+	int numberOfElements()
+	{
+		return this->m_rows*this->m_columns;
+	}
+
+	friend std::ostream& operator<<(std::ostream &out, const Matrix &m)
+	{
+		for (int i = 0; i < m.m_rows; ++i)
+		{
+			out << "( ";
+			for (int j = 0; j < m.m_columns; ++j)
+			{
+				out << m.m_matrix[i][j] << ' ';
+			}
+			out << ")\n";
+		}
+
+		return out;
+	}
+	friend std::istream& operator>>(std::istream &in, Matrix &m)
+	{
+		int elem = 1;
+		for (int i = 0; i < m.m_rows; ++i)
+		{
+			for (int j = 0; j < m.m_columns; ++j)
+			{
+				std::cout << "Enter the " << elem << ". element: ";
+				in >> m.m_matrix[i][j];
+				++elem;
+			}
+		}
+
+		return in;
+	}
+
+	friend Matrix operator+(const Matrix &m1, const Matrix &m2)
+	{
+		if ((m1.m_rows != m2.m_rows) && (m1.m_columns != m2.m_columns))
+			throw MatrixException("Invalid addition, different rows and columns");
+
+		Matrix _matrix(m2.m_rows, m2.m_columns);
+
+		for (int i = 0; i < _matrix.m_rows; ++i)
+		{
+			for (int j = 0; j < _matrix.m_rows; ++j)
+				_matrix.m_matrix[i][j] = m1.m_matrix[i][j] + m2.m_matrix[i][j];
+		}
+
+
+		return _matrix;
+	}
+	friend Matrix operator-(const Matrix &m1, const Matrix &m2)
+	{
+		/*if ((m1.m_rows != m2.m_rows) && (m1.m_columns != m2.m_columns))
+			throw MatrixException("Invalid subtraction, different rows and columns");
+
+		Matrix _matrix(m2.m_rows, m2.m_columns);
+
+		for (int i = 0; i < _matrix.m_rows; ++i)
+		{
+			for (int j = 0; j < _matrix.m_rows; ++j)
+				_matrix.m_matrix[i][j] = m1.m_matrix[i][j] - m2.m_matrix[i][j];
+		}
+
+
+		return _matrix;*/
+
+		// vagy
+
+		return m1 + (-1 * m2);
+	}
+	friend Matrix operator*(const Matrix &m1, const Matrix &m2)
+	{
+		Matrix _matrix(m2.m_rows, m2.m_columns);
+
+		for (int i = 0; i < m2.m_rows; ++i)
+		{
+			for (int j = 0; j < m2.m_columns; ++j)
+			{
+				if (m2.m_columns <= m1.m_columns)
+					for (int u = 0; u < m2.m_rows; ++u)
+						_matrix.m_matrix[i][j] += m1.m_matrix[i][u] * m2.m_matrix[u][j];
+				if (m1.m_columns != m2.m_rows)
+					throw MatrixException("The number of columns in the first matrix should be equal to the number of rows in the second");
+			}
+		}
+
+		return _matrix;
+	}
+	friend Matrix operator*(int number, const Matrix &m)
+	{
+		Matrix _matrix(m.m_rows, m.m_columns);
+
+		for (int i = 0; i < _matrix.m_rows; ++i)
+		{
+			for (int j = 0; j < _matrix.m_columns; ++j)
+			{
+				_matrix.m_matrix[i][j] = number * m.m_matrix[i][j];
+			}
+		}
+
+		return _matrix;
+	}
+	Matrix operator=(const Matrix &m)
+	{
+		if (this == &m)
+			return *this;
+
+		if ((this->m_rows == m.m_rows) && (this->m_columns == m.m_columns))
+		{
+			for (int i = 0; i < this->m_rows; ++i)
+			{
+				for (int j = 0; j < this->m_columns; ++j)
+				{
+					this->m_matrix[i][j] = m.m_matrix[i][j];
+				}
+			}
+		}
+		else
+			throw MatrixException("Invalid assignment");
+
+		return *this;
+	}
+	friend Matrix operator^(Matrix &m, int power)
+	{
+		if (power == 1)
+			return m;
+
+		if (power == 0)
+		{
+			if (m.m_columns == 1 && m.m_rows == 1)
+			{
+				Matrix _matrix(1, 1);
+
+				_matrix.m_matrix[0][0] = 1;
+
+				return _matrix;
+			}
+
+			if (m.m_columns == 2 || m.m_rows == 2)
+			{
+				Matrix _matrix(2, 2);
+
+				for (int i = 0; i < _matrix.m_columns; ++i)
+				{
+					_matrix.m_matrix[i][i] = 1;
+				}
+
+				return _matrix;
+			}
+
+			if (m.m_columns == 3 || m.m_columns == 3)
+			{
+				Matrix _matrix(3, 3);
+
+				for (int i = 0; i < _matrix.m_columns; ++i)
+				{
+					_matrix.m_matrix[i][i] = 1;
+				}
+
+				return _matrix;
+			}
+		}
+
+		if (power >= 2)
+		{
+			Matrix _matrix(m);
+			for (int i = 2; i <= power; ++i)
+				m = (m * _matrix);
+		}
+
+		return m;
+	}
+
+	double determinant()
+	{
+		if (this->m_rows != this->m_columns)
+			throw MatrixException("Cannot take determinant of uneven matrix");
+
+		double determinant{ 0 };
+		if (this->m_rows == 2 && this->m_columns == 2)
+		{
+			for (int i = 0; i < this->m_rows; ++i)
+			{
+				std::cout << "| ";
+				for (int j = 0; j < this->m_columns; ++j)
+				{
+					std::cout << this->m_matrix[i][j] << ' ';
+				}
+				if (i < (this->m_rows - 1))
+					std::cout << "|\n";
+				else
+					std::cout << "| = ";
+			}
+
+			determinant = ((this->m_matrix[0][0] * this->m_matrix[1][1]) - (this->m_matrix[0][1] * this->m_matrix[1][0]));
+		}
+
+		if (this->m_rows == 3 && this->m_columns == 3)
+		{
+			Matrix submatrix(2, 2);
+			for (int x = 0; x < this->m_rows; x++) 
+			{
+				int subi = 0;
+				for (int i = 1; i < this->m_columns; i++) 
+				{
+					int subj = 0;
+					for (int j = 0; j < this->m_columns; j++) 
+					{
+						if (j == x)
+							continue;
+						submatrix.m_matrix[subi][subj] = this->m_matrix[i][j];
+						subj++;
+					}
+					subi++;
+				}
+				determinant = determinant + (pow(-1, x) * this->m_matrix[0][x] * submatrix.Sdeterminant());
+			}
+
+				for (int i = 0; i < this->m_rows; ++i)
+				{
+					std::cout << "| ";
+					for (int j = 0; j < this->m_columns; ++j)
+					{
+						std::cout << this->m_matrix[i][j] << ' ';
+					}
+					if (i < (this->m_rows - 1))
+						std::cout << "|\n";
+					else
+						std::cout << "| = ";
+				}
+		}
+
+		return determinant;
+	}
+
+	int rank()
+	{
+		int rank{ 3 };
+
+		// speciális esetek
+		if (this->isNull())
+			return rank - 3;
+		if (this->m_rows == 2 && this->m_columns == 1)
+			return rank - 2;
+		if (this->m_rows == 3 && this->m_columns == 1)
+			return rank - 2;
+		if (this->m_rows == 1 && this->m_columns == 2)
+			return rank - 2;
+		if (this->m_rows == 1 && this->m_columns == 3)
+			return rank - 2;
+		
+		// normál eset
+		if (this->determinant() == 0)
+		{
+			if (this->m_rows == 3 && this->m_columns == 3)
+			{
+				if (this->isNull())
+					return rank - 3;
+
+				Matrix submatrix(2, 2);
+				for (int x = 0; submatrix.determinant() == 0; x++)
+				{
+					int subi = 0;
+					for (int i = 1; i < this->m_columns; i++)
+					{
+						int subj = 0;
+						for (int j = 0; j < this->m_columns; j++)
+						{
+							if (j == x)
+								continue;
+							submatrix.m_matrix[subi][subj] = this->m_matrix[i][j];
+							subj++;
+						}
+						subi++;
+					}
+				}
+
+				if (submatrix.determinant() != 0)
+					return rank - 1;
+
+				if (submatrix.determinant() == 0)
+				{
+					if (!(this->isNull()))
+						return rank - 2;
+					else
+						return rank - 3;
+				}
+			}
+
+			if (this->m_rows == 2 && this->m_columns == 2)
+				if (!(this->isNull()))
+					return rank - 2;
+				else
+					return rank - 3;
+
+		}
+		else
+		{
+			if (this->m_rows == 3 && this->m_columns == 3)
+				return rank;
+			if (this->m_rows == 2 && this->m_columns == 2)
+				return rank - 1;
+			if (this->m_rows == 1 && this->m_columns == 1)
+				return rank - 2;
+		}
+
+		throw MatrixException("Problem with rank");
+	}
+
+	Matrix transponalt()
+	{
+		Matrix _matrix(this);
+
+		for (int i = 0; i < this->m_rows; ++i)
+		{
+			for (int j = 0; j < this->m_columns; ++j)
+			{
+				_matrix.m_matrix[i][j] = this->m_matrix[j][i];
+			}
+		}
+
+		return _matrix;
+	}
+	Matrix coFactor(int p, int q)
+	{
+		Matrix submatrix(2, 2);
+
+		int i = 0, j = 0;
+		for (int row = 0; row < this->m_rows; row++)
+		{
+			for (int col = 0; col < this->m_columns; col++)
+			{
+				if (row != p && col != q)
+				{
+					submatrix.m_matrix[i][j++] = this->transponalt().m_matrix[row][col];
+
+					if (j == this->m_rows - 1)
+					{
+						j = 0;
+						i++;
+					}
+				}
+			}
+		}
+
+		return submatrix;
+	}
+	Matrix adjoint()
+	{
+		if (this->m_rows != this->m_columns)
+			throw MatrixException("Invalid adjungalt: uneven matrix");
+
+		Matrix _matrix(this);
+
+
+		if (this->m_rows == 2 && this->m_columns == 2)
+		{
+			int x = 1;
+			for (int i = 0; i < this->m_rows; ++i)
+			{
+				int y = 1;
+				for (int j = 0; j < this->m_columns; ++j)
+				{
+					_matrix.m_matrix[i][j] = pow(-1, i+j) * this->transponalt().m_matrix[x][y];
+					--y;
+				}
+				--x;
+			}
+		}
+
+		if (this->m_rows == 3 && this->m_columns == 3)
+		{
+			for (int i = 0; i < this->m_rows; ++i)
+			{
+				for (int j = 0; j < this->m_columns; ++j)
+				{
+					_matrix.m_matrix[i][j] = pow(-1, i+j) * (this->coFactor(i, j).determinant());
+				}
+			}
+		}
+
+		return _matrix;
+	}
+	Matrix invert()
+	{
+		if (this->determinant() == 0)
+			throw MatrixException("Determinant = 0, matrix is not invertible");
+
+		Matrix _matrix(this);
+
+		for (int i = 0; i < this->m_rows; ++i)
+		{
+			for (int j = 0; j < this->m_columns; ++j)
+			{
+				_matrix.m_matrix[i][j] = ((1 / this->determinant()) * this->adjoint().m_matrix[i][j]);
+			}
+		}
+
+		return _matrix;
+	}
+};
+
 //int main()
 //{
 //	try 
