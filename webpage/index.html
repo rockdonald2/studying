@@ -5,7 +5,7 @@
 <style>
 
 body {
-    background-color: hsl(0, 0%, 20%);
+    background-color: rgba(0, 0, 0, 0.85);
     margin: 50px 50px 50px 75px;
 
     font-family: Calibri;
@@ -49,6 +49,19 @@ ul#horizontal-menu li{
     padding: 25px 0px 15px 0px;
 }
 
+.menu {
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 20px 10px 20px 10px;
+    font-size: 32px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+    color: whitesmoke;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.menu:hover {
+    border-radius: 10px 10px 0px 0px;
+}
+
 a {
     text-decoration: none;
     color: hsl(210, 100%, 100%);
@@ -58,13 +71,15 @@ a {
 
 h1 {
     font-weight: bold;
-    text-shadow: 2px 2px rgba(0,0,0, 0.35);
+    font-size: 36px;
+    text-shadow: 2px 2px rgba(0,0,0, 0.25);
     color: hsl(210, 100%, 40%);
     margin-top: 55px;
     margin-right: 20%;
 
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 10px 10px 10px 10px;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 0.35em 0.35em 0.35em 0.35em;
+    border-radius: 10px 10px 10px 10px;
 }
 
 h2 {
@@ -88,6 +103,28 @@ span#notation {
     bottom: 25%;
 }
 
+.dropdown {
+    position: relative;
+    display: table;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.45);
+    min-width: 160px;
+    top: 63px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+    padding: 12px 16px;
+    border-radius: 0px 10px 10px 10px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content{
+    display: table;
+}
+
 </style>
 
 <head>
@@ -97,16 +134,25 @@ span#notation {
 
 <body>
     <header> 
-        <nav id="menu" class="menu">
+        <!--<nav id="menu" class="menu">
             <ul style="list-style-type: none" id="horizontal-menu">
                 <li id="Home"><a href="">Home</a></li>
                 <li id="About"><a href="">About</a></li>
                 <li id="Progress"><a href="">Progress</a></li>
             </ul>
-        </nav>
+        </nav>-->
+
+        <div class="dropdown">
+            <span class="menu"> ☰ Menu </span>
+            <div class="dropdown-content">
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="">Progress</a>
+            </div>
+        </div>
         <br>
         <br>
-        <h1> An ignorant view on making a webpage</h1>
+        <h1> An ignorant view on making a webpage </h1>
     </header>
 
 
