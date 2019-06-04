@@ -1,0 +1,31 @@
+QWidget {
+    background-color: grey;
+}
+
+QLabel#label_3, QLabel#label_4, QLabel#label_5, QLabel#label_6, QLabel#label_13, QLabel#label_14{
+    text-align: center;
+    color: white;
+}
+
+QLineEdit#numA1, QLineEdit#numA2, QLineEdit#numA3, QLineEdit#numA4, QLineEdit#numA5, QLineEdit#numA6, QLineEdit#numA7, QLineEdit#numA8, QLineEdit#numA9
+{
+    color:black;
+    background-color: white;
+}
+
+QLineEdit#numB1, QLineEdit#numB2, QLineEdit#numB3, QLineEdit#numB4, QLineEdit#numB5, QLineEdit#numB6, QLineEdit#numB7, QLineEdit#numB8, QLineEdit#numB9
+{
+    color:black;
+    background-color: white;
+}
+
+QLineEdit#numC1, QLineEdit#numC2, QLineEdit#numC3, QLineEdit#numC4, QLineEdit#numC5, QLineEdit#numC6, QLineEdit#numC7, QLineEdit#numC8, QLineEdit#numC9
+{
+    color:black;
+    background-color: white;
+}
+
+QLineEdit#nValue{
+    color: black;
+    background-color: white;
+}

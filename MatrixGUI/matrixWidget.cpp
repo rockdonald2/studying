@@ -3,6 +3,10 @@
 
 #include <QMessageBox>
 #include <QDebug>
+#include <QFile>
+#include <QStyle>
+
+
 
 using namespace standardMatrix;
 
