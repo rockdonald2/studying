@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+
+function myFunction() {
+    document.getElementById("elem").innerHTML = "Hey, that's javascript right there, whoo";
+    alert('whoo');
+}
+
+function hide() {
+    document.getElementById("profile-link").style.display = "none";
+}
+
+function unHide() {
+    document.getElementById("profile-link").style.display = "inline-block";
+}
+
+</script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
+    html {
+        background-color: lightblue;
+        font-family: 'Fira Sans', 'Lato', 'Raleway', Helvetica, sans-serif, 'Times New Roman', 'Arial';
+        font-size: 1.2rem;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 5% 100% 2fr 2fr 20%;
+        grid-template-areas: 
+            "header"
+            "welcome-section"
+            "projects"
+            "contact"
+            "footer";
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+/*header*/
+
+.header {
+    grid-area: header;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: right;
+    display: block;
+    width: 100%;
+    height: 6vh;
+    padding-left: 55vw;
+    padding-right: auto;
+    padding-top: 25px;
+    background-color: lightblue;
+}
+
+.header #navbar, #navbar ul, #navbar li {
+    float: left;
+    margin: 0;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    text-align: center;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: darkcyan;
+    font-size: 1rem;
+}
+
+#navbar a:hover {
+    color: darkgreen;
+}
+
+/*welcome-section*/
+
+#main {
+    margin-top: 5%;
+}
+
+#welcome-section {
+    grid-area: welcome-section;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: whitesmoke;
+}
+
+.about-section h1 {
+    text-align: center;
+    vertical-align: middle;
+    margin: 50vh auto 0 auto;
+    font-size: 2rem;
+}
+
+.about-section p {
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 25%;
+    font-size: 1rem;
+    color: darkgreen;
+}
+
+/*projects*/
+
+#projects {
+    margin-top: 45%;
+    text-align: center;
+}
+
+.project-section {
+    grid-area: projects;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 70vh;
+    left: 0;
+    top: 100%;
+    background: lightblue;
+}
+
+.project-tile {
+    display: inline-block;
+    border: 2px solid whitesmoke;
+    width: 20%;
+    height: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.projects-header {
+    color: whitesmoke;
+    padding-top: 3%;
+    padding-bottom: 1%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.reference-img {
+    width: 100%;
+    height: 85%;
+    border-bottom: 2px solid whitesmoke;
+}
+
+.reference-paragraph {
+    margin: 0;
+    margin-top: 2%;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.show-all {
+    margin: 3% auto 0 auto;
+}
+
+.show-all a {
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+    padding: 10px 3% 10px 3%;
+    background-color: lightgray;
+    text-decoration: none;
+    color: black;
+    font-size: 1.05rem;
+}
+
+.show-all a:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/*contact*/
+
+.link-section {
+    grid-area: contact;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 70vh;
+    left: 0;
+    top: 180%;
+    background: lightgreen;
+    text-align: center;
+}
+
+#link-header {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.7rem;
+    margin-top: 8%;
+}
+
+#link-header-paragraph {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 5%;
+}
+
+.profile-link {
+    display: inline-block;
+    border: 2px solid whitesmoke;
+    border-radius: 50%;
+    width: 8%;
+    height: 100px;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: lightgrey;
+    vertical-align: middle;
+}
+
+.profile-link:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.profile-link p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding-top: 25%;
+    padding-bottom: 25%;
+}
+
+.link-section a {
+    text-decoration: none;
+    color: black;
+}
+/*footer*/
+
+.footer-section {
+    grid-area: footer;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 13vh;
+    left: 0;
+    top: 250%;
+    background: dodgerblue;
+    text-align: center;
+    padding-top: 2%;
+}
+
+.footer-paragraph {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: whitesmoke;
+}
+
+.footer-paragraph a {
+    color: whitesmoke;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-paragraph a:hover {
+    color: darkgray;
+}
+
+@media (max-width: 1250px) {
+
+    .header {
+        padding-left: 21.5%;
+        padding-right: 21.5%;
+    }
+
+    .about-section h1 {
+        margin: 50vh auto 0 auto;
+    }
+
+    .project-section {
+        height: 100vh;
+    }
+
+    .project-tile {
+        display: block;
+        margin: 0 auto 10vh auto;
+        width: 52%;
+        height: 300px;
+    }
+
+    .link-section {
+        top: 300%;
+        height: 120vh;
+    }
+
+    .profile-link {
+        display: block;
+        margin-left: 38.5%;
+        margin-right: 38.5%;
+        margin-bottom: 5%;
+        width: 20%;
+        display: -webkit-flexbox;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-link p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-section {
+        top: 420%;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .header {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .about-section h1 {
+        margin: 50vh auto 0 auto;
+    }
+
+    .project-section {
+        height: 100vh;
+    }
+
+    .project-tile {
+        display: block;
+        margin: 0 auto 10vh auto;
+        width: 52%;
+        height: 300px;
+    }
+
+    .link-section {
+        top: 300%;
+        height: 100vh;
+    }
+
+    .profile-link {
+        display: block;
+        margin-left: 38.5%;
+        margin-right: 38.5%;
+        margin-bottom: 5%;
+        width: 20%;
+    }
+
+    .footer-section {
+        top: 400%;
+    }
+}
+
+</style>
+
+    <head>
+        <title id="tabTitle">Personal portfolio</title>
+        <link rel="shortcut icon" type="image/x-icon" href="4-512.png" />
+        <meta content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    </head>
+
+    <header class="header">
+        <nav id="navbar">
+            <ul style="list-style: none;">
+                <li><a href="#welcome-section">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#links">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <body id="main">
+
+        <section id="welcome-section">
+            <div class="about-section">
+                <h1 id="elem" onclick="myFunction()">Hey I'm Zsolt.</h1>
+                <p>a wannabe web developer and programmer</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="project-section">
+                <div class="projects-header">
+                    <h1>There are some of my projects</h1>
+                </div>
+                <a class="project-tile" href="productLandingPage.html" target="_blank">
+                    <img src="productLandingPage.jpg" class="reference-img">
+                    <p class="reference-paragraph">
+                        Product landing page
+                    </p>
+                </a>
+                <a class="project-tile" href="tributePage.html" target="_blank">
+                    <img src="tributePage.jpg" class="reference-img">
+                    <p class="reference-paragraph">
+                        Tribute page
+                    </p>
+                </a>
+                <a class="project-tile" href="technicalDocumentationPage.html" target="_blank">
+                    <img src="technicalDocumentationPage.jpg" class="reference-img">
+                    <p class="reference-paragraph">
+                        Technical documentation page
+                    </p>
+                </a>
+                <a class="project-tile" href="surveyForm.html" target="_blank">
+                    <img src="surveyform.jpg" class="reference-img">
+                    <p class="reference-paragraph">
+                        Survey form
+                    </p>
+                </a>
+
+                <div class="show-all">
+                    <a href="https://www.freecodecamp.org/rockdonald2" target="_blank">Show all</a>
+                </div>
+            </div>
+        </section>
+        <section id="links">
+            <div class="link-section">
+                <h1 id="link-header" onclick="unHide()">Let's work together...</h1>
+                <p id="link-header-paragraph">How do you take your coffee?</p>
+                <a class="profile-link" onclick = "hide()" id="profile-link" href="https://www.facebook.com" target="_blank">
+                    <p>Facebook</p>
+                </a>
+                <a class="profile-link" id="profile-link" href="https://github.com/freecodecamp" target="_blank">
+                    <p>GitHub</p>
+                </a>
+                <a class="profile-link" id="profile-link" href="https://www.instagram.com" target="_blank">
+                    <p>Instagram</p>
+                </a>
+                <a class="profile-link" id="profile-link" href="mailto:example@example.com" target="_blank">
+                    <p>Send a mail</p>
+                </a>
+                <a class="profile-link" id="profile-link" href="tel:555-555-5555" target="_blank">
+                    <p>Call me</p>
+                </a>
+            </div>
+        </section>
+
+    </body>
+
+    <footer class="footer">
+        <div class="footer-section">
+            <p class="footer-paragraph">
+                **This is just a fake portfolio.. All the projects and contact details given are not real..
+            </p>
+            <p class="footer-paragraph">
+                &copy; Created for <a href="https://www.freecodecamp.com/" class="footer-link" target="_blank">FreeCodeCamp</a>
+            </p>
+        </div>
+    </footer>
+
+</html>
