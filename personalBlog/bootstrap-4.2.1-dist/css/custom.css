@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
+.container-fluid {
+    font-family: 'Fira Sans' ,'Raleway', 'Lato';
+}
+
+.bg-light {
+    background-color:whitesmoke!important;
+}
+
+.bg-secondary {
+    background-color: lightgray!important;
+}
