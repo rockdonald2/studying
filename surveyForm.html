@@ -1,135 +1,140 @@
 <!DOCTYPE html>
 <html>
 <style>
+    @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+    /*https://www.freecodecamp.org/forum/t/build-a-survey-form-formatting/205175/4*/
 
-/*https://www.freecodecamp.org/forum/t/build-a-survey-form-formatting/205175/4*/
+    #main {
+        font-family: 'Raleway', Helvetica, sans-serif;
+        max-width: 100%;
+        min-width: 320px;
+        max-height: 100%;
+        margin: 2%;
+        text-align: center;
+        display: grid;
+        grid-template-rows: 10% auto;
+        grid-template-areas:
+            "header"
+            "content";
+        grid-gap: 10px;
+        align-items: center;
+        justify-items: center;
+        background-color: lightgray;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.10);
+    }
 
-#main {
-    font-family: 'Raleway', Helvetica, sans-serif;
-    max-width: 100%;
-    min-width: 320px;
-    max-height: 100%;
-    margin: 2%;
-    text-align: center;
-    display: grid;
-    grid-template-rows: 10% auto;
-    grid-template-areas: 
-        "header"
-        "content";
-    grid-gap: 10px;
-    align-items: center;
-    justify-items: center;
-    background-color: lightgray;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.10);
-}
+    #title,
+    #header {
+        grid-area: header;
+    }
 
-#title, #header {
-    grid-area: header;
-}
+    #div-main {
+        grid-area: content;
+        background-color: white;
+        color: rgba(0, 0, 0, 0.80);
+        width: 75%;
+        max-width: 900px;
+        min-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: auto;
+        padding-right: auto;
+        padding-bottom: 1%;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.05);
+    }
 
-#div-main {
-    grid-area: content;
-    background-color: white;
-    color: rgba(0, 0, 0, 0.80);
-    width: 75%;
-    max-width: 900px;
-    min-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: auto;
-    padding-right: auto;
-    padding-bottom: 1%;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.05);
-}
+    .label {
+        display: inline-block;
+        text-align: right;
+        width: 40%;
+        padding: 5px;
+        vertical-align: top;
+        margin-top: 10px;
+    }
 
-.label {
-    display: inline-block;
-    text-align: right;
-    width: 40%;
-    padding: 5px;
-    vertical-align: top;
-    margin-top: 10px;
-}
+    .input {
+        display: inline-block;
+        text-align: left;
+        width: 48%;
+        vertical-align: middle;
+    }
 
-.input {
-    display: inline-block;
-    text-align: left;
-    width: 48%;
-    vertical-align: middle;
-}
+    .input-field {
+        height: 20px;
+        width: 280px;
+        padding: 5px;
+        margin: 10px;
+        border: 1px solid gray;
+        border-radius: 2px;
+    }
 
-.input-field {
-    height: 20px;
-    width: 280px;
-    padding: 5px;
-    margin: 10px;
-    border: 1px solid gray;
-    border-radius: 2px;
-}
+    #dropdown,
+    #like {
+        height: 35px;
+        width: 140px;
+        padding: 5px;
+        margin: 10px;
+        margin-top: 15px;
+        border: 1px solid gray;
+        border-radius: 2px
+    }
 
-#dropdown, #like {
-    height: 35px;
-    width: 140px;
-    padding: 5px;
-    margin: 10px;
-    margin-top: 15px;
-    border: 1px solid gray;
-    border-radius: 2px
-}
+    .radio {
+        position: relative;
+        left: -43px;
+        margin-left: 10px;
+        display: block;
+        padding-bottom: 10px;
+    }
 
-.radio {
-   position: relative;
-   left: -43px;
-   margin-left: 10px;
-   display: block;
-   padding-bottom: 10px; 
-}
+    .checkbox {
+        position: relative;
+        left: -43px;
+        margin-left: 10px;
+        display: block;
+        padding-bottom: 10px;
+    }
 
-.checkbox {
-   position: relative;
-   left: -43px;
-   margin-left: 10px;
-   display: block;
-   padding-bottom: 10px; 
-}
+    #submit {
+        padding: 1.5% 3% 1.5% 3%;
+        background-color: lightskyblue;
+        color: white;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 5px;
+    }
 
-#submit {
-    padding: 1.5% 3% 1.5% 3%;
-    background-color: lightskyblue;
-    color: white;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 5px;
-}
+    @media screen and (max-width: 833px) {
+        .input-field {
+            width: 80%;
+        }
 
-@media screen and (max-width: 833px) {
-  .input-field {
-    width: 80%;
-  }
-  select {
-    width: 90%;
-  }
-}
+        select {
+            width: 90%;
+        }
+    }
 
-@media screen and (max-width: 520px) {
-  .label {
-    width: 100%;
-    text-align: left;
-  }
-  .input {
-    width: 80%;
-    float: left;
-  }
-  .input-field {
-    width: 100%;
-  }
-  select {
-    width: 100%;
-  }
-}
+    @media screen and (max-width: 520px) {
+        .label {
+            width: 100%;
+            text-align: left;
+        }
+
+        .input {
+            width: 80%;
+            float: left;
+        }
+
+        .input-field {
+            width: 100%;
+        }
+
+        select {
+            width: 100%;
+        }
+    }
 
 </style>
 
@@ -179,7 +184,7 @@
             <div class="input">
                 <input class="input-field" type="number" name="age" id="number" placeholder="Enter your age" min="16" max="99" required />
             </div>
-            
+
             <div class="label">
                 <label id="role-label" for="role">
                     Which option best describes your current role?
@@ -212,7 +217,7 @@
 
             <div class="label">
                 <label id="like-label" for="like">
-                        What do you like most in FCC:
+                    What do you like most in FCC:
                 </label>
             </div>
             <div class="input">
@@ -227,8 +232,8 @@
 
             <div class="label">
                 <label id="improvements-label" for="improvements">
-                        Things that should be improved in the future
-                        (Check all that apply):
+                    Things that should be improved in the future
+                    (Check all that apply):
                 </label>
             </div>
             <div class="input">
@@ -263,5 +268,3 @@
 </body>
 
 </html>
-
-                               

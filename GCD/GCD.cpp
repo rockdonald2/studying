@@ -28,7 +28,7 @@ int gcd(int a, int b) {
 
 int main(void) {
 
-	int divisor = gcd(0, 49);
+	int divisor = gcd(5, 3);
 	std::cout << divisor;
 
 	return 0;
