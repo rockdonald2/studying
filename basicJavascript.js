@@ -866,7 +866,7 @@ function dropElements(arr, func) {
 console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
 console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}));
 console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;}));
-console.log(dropElements([1, 2, 3, 9, 2], function(n) {return n > 2;}));*/
+console.log(dropElements([1, 2, 3, 9, 2], function(n) {return n > 2;}));
 
 function steamrollArray(arr) {
   // I'm a steamroller, baby
@@ -893,3 +893,476 @@ function steamrollArray(arr) {
 }
 
 console.log(steamrollArray([1, [2], [3, [[4]]]]));
+
+function binaryAgent(str) {
+  let convertToDecimal = function(binaryStr) {
+    let decimalValue = 0;
+    let pow = 0;
+    for (let i = binaryStr.length - 1; i >= 0; i--) {
+      decimalValue += binaryStr[i] * Math.pow(2, pow);
+      pow++;
+    }
+    return decimalValue;
+  }
+
+  let literalStr = "";
+  let splitBinaryStr = str.split(" ");
+
+  splitBinaryStr.forEach(element => {
+    literalStr += String.fromCharCode(convertToDecimal(element));
+  });
+  
+
+  return literalStr;
+}
+
+console.log(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"));
+
+function truthCheck(collection, pre) {
+  // Is everyone being true?
+  let verdict = true;
+
+  function getBoolean(value) {
+    switch (value) {
+      case "false":
+      case "zero":
+      case 0:
+      case "0":
+      case "":
+      case "NaN":
+      case null: 
+      case undefined:
+        return false;
+
+      default:
+        return true;
+    }
+  }
+
+  if (collection.every(element => {
+    return (element.hasOwnProperty(pre) && getBoolean(element[pre]) && !Number.isNaN(element[pre]));
+  })) {
+    verdict = true;
+
+    return verdict;
+  }
+  else {
+    verdict = false;
+
+    return verdict;
+  }
+}
+
+console.log(truthCheck([{"single": "yes"}], "single"));
+
+
+
+function addTogether() {
+  let checkNum = function isNumber(value) {
+    return typeof(value) === "number";
+  };
+
+  if (arguments.length > 1) {
+    let a = arguments[0];
+    let b = arguments[1];
+
+    if (a === undefined || b === undefined) {
+      return undefined;
+    }
+    else if (checkNum(a) && checkNum(b)) {
+      return a + b;
+    }
+    else {
+      return undefined;
+    }
+  }
+
+  let c = arguments[0];
+
+  if (checkNum(c)) {
+    return function(arg2) {
+      if (c === undefined || arg2 === undefined) {
+        return undefined;
+      }
+      else if (checkNum(c) && checkNum(arg2)) {
+        return c + arg2;
+      }
+      else {
+        return undefined;
+      }
+    }
+  }
+}
+
+console.log(addTogether(2,3));
+console.log(addTogether(2)(3));
+console.log(addTogether(2, "3"));
+
+var Person = function(firstAndLast) {
+
+  this.setFullName = function(nFirstAndLast) {
+    firstAndLast = nFirstAndLast;
+  };
+  this.setFirstName = function(first) {
+    firstAndLast = first + " " + firstAndLast.split(" ")[1];
+  };
+  this.setLastName = function(last) {
+    firstAndLast = firstAndLast.split(" ")[0] + " " + last;
+  };
+  this.getFirstName = function() {
+    return firstAndLast.split(" ")[0];
+  };
+  this.getLastName = function() {
+    return firstAndLast.split(" ")[1];
+  };
+  this.getFullName =  function() {
+    return firstAndLast;
+  };
+
+  return firstAndLast;
+}
+
+var bob = new Person('Bob Ross');
+console.log(bob.getFullName());
+console.log(bob.getFirstName());
+console.log(bob.getLastName());
+console.log(Object.keys(bob).length)
+bob.setFirstName("Haskell");
+console.log(bob.getFirstName());
+bob.setLastName("Russell");
+console.log(bob.getLastName());
+console.log(bob.getFullName());
+bob.setFullName("Haskell Curry");
+console.log(bob.getFullName());
+
+function orbitalPeriod(arr) {
+  const GM = 398600.4418;
+  const earthRadius = 6367.4447;
+
+  let count = 0;
+
+  let h, v, P;
+
+  while (count < arr.length) {
+    h = arr[count]["avgAlt"];
+
+    v = Math.sqrt(GM / (earthRadius + h));
+    P = 2*Math.PI*((earthRadius + h) / v);
+
+    delete arr[count]["avgAlt"];
+
+    arr[count].orbitalPeriod = Math.round(P);
+
+    count++;
+  }
+
+  return arr;
+}
+
+console.log(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));
+console.log(orbitalPeriod([{name: "iss", avgAlt: 413.6}, {name: "hubble", avgAlt: 556.7}, {name: "moon", avgAlt: 378632.553}]));
+
+function palindrome(str) {
+  // Good luck!
+
+  function removeNAChars(str) {
+    let naChars = /[^a-z0-9]/gi;
+
+    return str.replace(naChars, "");
+  }
+
+  var invertStr = function(str) {
+
+    function invertArr(arr) {
+      let i = 0;
+      let j = arr.length - 1;
+      for ( ; i < arr.length / 2; i++) {
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        j--
+      }
+    
+      return arr;
+    }
+
+    return invertArr(str.split("")).join("");
+  }
+
+  if (invertStr(removeNAChars(str.toLowerCase())) === removeNAChars(str.toLowerCase())) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
+
+console.log(palindrome("eye"));
+console.log(palindrome("dog"));
+console.log(palindrome("racecar"));
+console.log(palindrome("RaceCar"));
+console.log(palindrome("race CAR"));
+console.log(palindrome("A man, a plan, a canal. Panama"));
+
+function convertToRoman(num) {
+
+  let roman = "";
+
+  const roman1 = "I";
+  const roman5 = "V";
+  const roman10 = "X";
+  const roman50 = "L";
+  const roman100 = "C";
+  const roman500 = "D";
+  const roman1000 = "M";
+
+  let calculate1To9 = function(num) {
+    let romanNumber = "";
+    if (num <= 5) {
+      if (num < 4) {
+        while (num != 0) {
+          romanNumber += roman1;
+          num--;
+        }
+      }
+      else if (num == 4) {
+        romanNumber = romanNumber + roman1 + roman5;
+      }
+      else if (num == 5) {
+        romanNumber += roman5 ;
+      }
+      else if (num == 0) {
+        return romanNumber;
+      }
+    }
+    else if (num > 5 && num < 10) {
+      if (num < 9) {
+        while (num > 5) {
+          romanNumber += roman1;
+          num--;
+        }
+  
+        romanNumber = roman5 + romanNumber;
+      }
+      else if (num == 9) {
+        romanNumber = roman1 + roman10;
+      }
+    }
+
+    return romanNumber;
+  }
+
+  let calculate10 = function(num) {
+    let romanNumber = "";
+    if (num == 9) {
+      romanNumber = roman10 + roman100;
+    }
+    else if (num == 4) {
+      romanNumber = roman10 + roman50;
+    }
+    else if (num < 5) {
+      while (num > 0) {
+        romanNumber += roman10;
+        num--
+      }
+    }
+    else if (num >= 5) {
+      num -= 5;
+      while (num > 0) {
+        romanNumber = roman10 + romanNumber;
+        num--;
+      }
+      romanNumber = roman50 + romanNumber;
+    }
+
+    return romanNumber;
+  }
+  
+  let calculate100 = function(num) {
+    let romanNumber = "";
+    if (num == 9) {
+      romanNumber = roman100 + roman1000;
+    }
+    else if (num == 4) {
+      romanNumber = roman100 + roman500;
+    }
+    else if (num < 5) {
+      while (num > 0) {
+        romanNumber = roman100 + romanNumber;
+        num--
+      }
+    }
+    else if (num >= 5) {
+      num -= 5;
+      while (num > 0) {
+        romanNumber = roman100 + romanNumber;
+        num--
+      }
+      romanNumber = roman500 + romanNumber;
+    }
+
+    return romanNumber;
+  }
+
+  let calculate1000 = function(num) {
+    let romanNumber = "";
+    if (num < 5) {
+      while (num > 0) {
+        romanNumber = roman1000 + romanNumber;
+        num--;
+      }
+    }
+    else if (num >= 5) {
+      num -= 5;
+      while (num > 0) {
+        romanNumber = roman10 + romanNumber;
+        num--;
+      }
+      romanNumber = "_" + roman500 + romanNumber;
+    }
+
+    return romanNumber;
+  }
+
+  if (num <= 5) {
+    return calculate1To9(num);
+  }
+  else if (num <= 10) {
+    if (num == 10) {
+      return roman10;
+    }
+    else {
+      return calculate1To9(num);
+    }
+  }
+  else if (num <= 50) {
+    if (num == 50) {
+      return roman50;
+    }
+    else if (num >= 40 && num <= 49) {
+      num -= 10 * Math.floor(num / 10);
+
+      roman = roman10 + roman50 + calculate1To9(num);
+    }
+    else if (num > 10 && num < 40) {
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman += calculate10(nTimes10);
+      roman += calculate1To9(num);
+    }
+  }
+  else if (num <= 100) {
+    if (num == 100) {
+      return roman100;
+    }
+    else if (num > 50 && num < 90) {
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman += calculate10(nTimes10);
+      roman += calculate1To9(num);
+    }
+    else if (num >= 90 && num <= 99) {
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman = roman10 + roman100 + calculate1To9(num);
+    }
+  }
+  else if (num <= 500) {
+    if (num == 500) {
+      return roman500;
+    }
+    else if (num > 100 && num < 400) {
+      let nTimes100 = Math.floor(num / 100);
+      num -= 100 * nTimes100;
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman = calculate100(nTimes100) + calculate10(nTimes10) + calculate1To9(num);
+    }
+    else if (num >= 400 && num <= 499) {
+      let nTimes100 = Math.floor(num / 100);
+      num -= 100 * nTimes100;
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman = roman100 + roman500 + calculate10(nTimes10) + calculate1To9(num);
+    }
+  }
+  else if (num <= 1000) {
+    if (num == 1000) {
+      return roman1000;
+    }
+    else if (num > 500 && num < 900) {
+      let nTimes100 = Math.floor(num / 100);
+      num -= 100 * nTimes100;
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman = calculate100(nTimes100) + calculate10(nTimes10) + calculate1To9(num);
+    }
+    else if (num >= 900 && num <= 999) {
+      let nTimes100 = Math.floor(num / 100);
+      num -= 100 * nTimes100;
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman = roman100 + roman1000 + calculate10(nTimes10) + calculate1To9(num);
+    }
+  }
+  else if (num <= 5000) {
+    if (num == 5000) {
+      let nTimes1000 = Math.floor(num / 1000);
+      num -= 1000 * nTimes1000;
+      roman = calculate1000(nTimes1000);
+    }
+    else if (num > 1000 && num < 4000) {
+      let nTimes1000 = Math.floor(num / 1000);
+      num -= 1000 * nTimes1000;
+      let nTimes100 = Math.floor(num / 100);
+      num -= 100 * nTimes100;
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman = calculate1000(nTimes1000) + calculate100(nTimes100) + calculate10(nTimes10) + calculate1To9(num);
+    }
+    else if (num >= 4000 && num <= 4999) {
+      let nTimes1000 = Math.floor(num / 1000);
+      num -= 1000 * nTimes1000;
+      let nTimes100 = Math.floor(num / 100);
+      num -= 100 * nTimes100;
+      let nTimes10 = Math.floor(num / 10);
+      num -= 10 * nTimes10;
+
+      roman = roman1000 + calculate1000(5) + calculate100(nTimes100) + calculate10(nTimes10) + calculate1To9(num);
+    }
+  }
+  else if (num > 5000) {
+    roman = "NUMBER TOO BIG (MAX. 5000)";
+  }
+
+  return roman;
+ }
+ 
+console.log(convertToRoman(3999));*/
+
+
+function convertToRoman(num) {
+  let decimalArr = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  let romanArr = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+
+  let roman = "";
+
+  for (let index = 0; index < decimalArr.length; index++) {
+    while (decimalArr[index] <= num) {
+      roman += romanArr[index];
+      num -= decimalArr[index];
+    }
+  }
+
+  return roman;
+ }
+ 
+ console.log(convertToRoman(36));
