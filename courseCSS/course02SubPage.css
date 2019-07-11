@@ -1,0 +1,103 @@
+main {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    z-index: 0;
+}
+
+@media (min-width: 40rem) {
+    main {
+        max-width: 1500px;
+    }
+}
+
+.background {
+    background: url(plans-background.jpg) center/cover;
+    filter: blur(5px) grayscale(40%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.main-plans {
+    border: 3px solid #0e4f1f;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: #cdf9d0;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    width: 75vw;
+}
+
+.main-plans:hover, .main-plans:active {
+    border: 3px solid #da003688;
+}
+
+.main-plans:focus {
+    outline: none;
+}
+
+.main-plan {
+    text-decoration: none;
+    display: block;
+    padding: 1rem;
+    position: relative;
+}
+
+.main-plan__title {
+    color: black;
+    margin-top: 1rem;
+}
+
+.main-plan__badge {
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 1rem;
+    font-size: 0.8rem;
+    background: #ff5454;
+    border-radius: 50%;
+}
+
+.main-plan__subtitle {
+    color: #686868;
+}
+
+.main-plan__description {
+    background: white;
+    border: 1px solid #0e4f1f;
+    padding: 1rem;
+    color: black;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.main-plan--plus {
+    background: #7AF69A;
+}
+
+.main-plan--plus .main-plan .main-plan__title {
+    margin-top: 3rem;
+}
+
+.main-plan--free {
+    float: right;
+    text-align: right;
+}
+
+.main-plan--premium {
+    background: #004825;
+}
+
+.main-plan--premium .main-plan__title {
+    color: white;
+}
+
+.main-plan--premium .main-plan__subtitle {
+    color: #ccc;
+}

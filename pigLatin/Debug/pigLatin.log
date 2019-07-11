@@ -1,0 +1,3 @@
+﻿  pigLatin.cpp
+D:\GitHub\studying\pigLatin\pigLatin.cpp(45,37): warning C4018:  '<': signed/unsigned mismatch
+  pigLatin.vcxproj -> D:\GitHub\studying\pigLatin\Debug\pigLatin.exe

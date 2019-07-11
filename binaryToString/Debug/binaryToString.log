@@ -1,0 +1,3 @@
+﻿  binaryToString.cpp
+D:\GitHub\studying\binaryToString\binaryToString.cpp(18,37): warning C4018:  '<': signed/unsigned mismatch
+  binaryToString.vcxproj -> D:\GitHub\studying\binaryToString\Debug\binaryToString.exe

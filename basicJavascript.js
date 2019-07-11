@@ -1346,7 +1346,7 @@ function convertToRoman(num) {
   return roman;
  }
  
-console.log(convertToRoman(3999));*/
+console.log(convertToRoman(3999));
 
 
 function convertToRoman(num) {
@@ -1366,3 +1366,320 @@ function convertToRoman(num) {
  }
  
  console.log(convertToRoman(36));
+
+ function rot13(str) { // LBH QVQ VG!
+  const lowerBound = 65;
+  const higherBound = 90;
+  const rot = 13;
+
+  function checkNAChar(char) {
+    let naChars = /[^a-z0-9]/gi;
+
+    if (typeof char == "string") {
+      return char.search(naChars);
+    }
+    else if (typeof char == "number") {
+      return String.fromCharCode(char).search(naChars);
+    }
+  }
+
+  let charCodes = function(str) {
+    let newStr = [];
+    for (let i = 0; i < str.length; i++) {
+      if (checkNAChar(str[i]) == -1) {
+        newStr.push(str.charCodeAt(i));
+      }
+      else {
+        newStr.push(str[i]);
+      }
+    }
+
+    return newStr;
+  }
+
+  let decreaseCharCodes = function(charCodeArr) {
+    let newStr = [];
+    let counter = 0;
+    let charCode = 0;
+    for (let i = 0; i < charCodeArr.length; i++) {
+      if (checkNAChar(charCodeArr[i]) != -1) {
+        newStr.push(charCodeArr[i]);
+        continue;
+      }
+      else if ((charCodeArr[i] - rot) >= lowerBound) {
+        newStr.push(charCodeArr[i] - rot);
+      }
+      else if ((charCodeArr[i] - rot) < lowerBound) {
+        counter = rot;
+        charCode = charCodeArr[i];
+        while (charCode >= lowerBound) {
+          counter--;
+          charCode--;
+        }
+        newStr.push(higherBound - counter);
+      }
+    }
+
+    return newStr;
+  }
+
+  let translateCharCodeToString = function(charCodeArr) {
+    let newStr = [];
+    for (let i = 0; i < charCodeArr.length; i++) {
+      if (checkNAChar(charCodeArr[i]) != -1) {
+        newStr.push(charCodeArr[i]);
+        continue;
+      }
+      else {
+        newStr.push(String.fromCharCode(charCodeArr[i]));
+      }
+    }
+
+    return newStr.join("");
+  }
+  
+  return translateCharCodeToString(decreaseCharCodes(charCodes(str)));
+}
+
+// Change the inputs below to test
+console.log(rot13("SERR PBQR PNZC"));
+console.log(rot13("SERR CVMMN!"));
+console.log(rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."));*/
+
+/* function telephoneCheck(str) {
+  // Good luck!
+  let delimiter = /[\s-()]/gi;
+  let valid = true;
+
+  function deleteEmpty(arr) {
+    let newArr = [];
+
+    if (arr[0] == "" && arr[arr.length - 1] == "") {
+      valid = false;
+      return newArr;
+    }
+
+    arr.forEach(element => {
+      if (element != "" && element != "1") {
+        newArr.push(element);
+      }
+      else if (element == "-1") {
+        valid = false;
+      }
+    })
+
+    return newArr;
+  }
+
+  function validLength(arr) {
+    if (arr.length != 3) {
+      if (arr[0].length != 10) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+    else {
+      return true;
+    }
+  }
+
+  let number = deleteEmpty(str.split(delimiter));
+
+  if (!valid) {
+    return false;
+  }
+
+  if (validLength(number)) {
+    valid = true;
+  }
+  else {
+    return false;
+  }
+
+  number.forEach(element => {
+    if (isNaN(Number(element))) {
+      valid = false;
+    }
+  })
+
+  return valid;
+} 
+
+function telephoneCheck(str) {
+  // Good luck!
+  let validBracketFormat = function(str) {
+    let workingStrArr = str.split("");
+    let bracketCounter = 0;
+
+   for (let index = 0; index < 7; index++) {
+     if (workingStrArr[index] == "(" || workingStrArr[index] == ")") {
+       bracketCounter++;
+     }
+   }
+
+    if (bracketCounter != 2 && bracketCounter != 0) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  let validCountryCode = function(str) {
+    let delimiter = /\s/;
+
+    let workingStrArr = str.split(delimiter);
+
+    if (workingStrArr[0] != "1") {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  let validLength = function(str) {
+    let delimiter = /[\s-()]/gi;
+    return (str.replace(delimiter, "").replace(/^1/, "").split("").length == 10)
+  }
+
+  if (!validBracketFormat(str)) {
+    return false;
+  }
+
+  if (str.split(" ").length >= 2) {
+    if (!validCountryCode(str)) {
+      return false;
+    }
+  }
+
+  if (!validLength(str)) {
+    return false;
+  }
+
+  let delimiter = /[\s-()]/gi;
+
+  return str.replace(delimiter, "").replace(/^1/, "").split("").every(element => {
+    if (isNaN(Number(element))) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  });
+}
+
+console.log(telephoneCheck("(5555555555)")); */
+
+function checkCashRegister(price, cash, cid) {
+  let cidBackup = JSON.parse(JSON.stringify(cid));
+  let cashArr = [0.01, 0.05, 0.1, 0.25, 1, 5, 10, 20, 100];
+  let cashArrCurrency = ["PENNY", "NICKLE", "DIME", "QUARTER", "ONE", "FIVE", "TEN", "TWENTY", "ONE HUNDRED"];
+  let changeCash = Number(Math.round((cash - price)+'e2')+'e-2');
+  // floating point rounding error
+
+  let changeArr = [];
+  // if the price and the cash are equal and exact
+  if (!changeCash) {
+    let index = 0;
+    cashArr.forEach(element => {
+      if (element == price) {
+        index = cashArr.indexOf(element);
+      }
+    })
+
+    cid[index][1] = cid[index][1] - price;
+
+    return { status: "CLOSED", change: cid};
+  }
+
+  // calculating the changeArr, duplication is possible
+  for (let index = cashArr.length - 1; index >= 0; ) {
+    if (changeCash >= cashArr[index]) {
+      if (cid[index][1] != 0 || ((cid[index][1] - cashArr[index]) >= 0)) {
+        changeArr.push([cashArrCurrency[index], cashArr[index]]);
+        cid[index][1] = Number(Math.round((cid[index][1] - cashArr[index])+'e2')+'e-2');
+        changeCash = Number(Math.round((changeCash - cashArr[index])+'e2')+'e-2');
+      }
+      else {
+        index--;
+      }
+    }
+    else {
+      if (changeCash) {
+        index--;
+      }
+      else {
+        break;
+      }
+    }
+  }
+
+  var change = {};
+
+  // if there aren's sufficient funds to give back change, first early termination flow
+  if (changeCash != 0) {
+    change = { status: "INSUFFICIENT_FUNDS", change: [] };
+    return change;
+  }
+
+  // if the cid is empty after the change due, second early termination flow
+  let empty = false;
+  cid.every(element => {
+    if (element[1] == 0) {
+      empty = true;
+    }
+    else {
+      empty = false;
+    }
+  })
+
+  if (empty) {
+    return {status: "CLOSED", change: cidBackup};
+  }
+
+  // if changeCash == 0 and the cid isn't empty, normal flow, concatenating duplicate values
+  let finalChange = [];
+  let j = 1;
+  for (let i = 0; i <= changeArr.length - 1; ) {
+    let newPrice = 0;
+    newPrice = changeArr[i][1];
+    while (j < changeArr.length) {
+      if (changeArr[i][0] === changeArr[j][0]) {
+        newPrice += changeArr[j][1];
+      }
+      else {
+        break;
+      }
+
+      j++;
+    }
+
+    finalChange.push([changeArr[i][0], newPrice]);
+    i = j;
+    j++;
+  }
+
+  // if there is no change back
+  if (!(finalChange && finalChange.length)) {
+    change.status = "CLOSED";
+    change.change = cid;
+
+    return {status: "CLOSED", change: cid};
+  }
+
+  change.status = "OPEN";
+  change.change = finalChange;
+
+  finalChange.forEach(element => {
+    console.log(element);
+  })
+
+
+  // Here is your change, ma'am.
+  return change;
+}
+
+console.log(checkCashRegister(12.5, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
