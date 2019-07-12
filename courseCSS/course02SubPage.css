@@ -1,7 +1,23 @@
+@font-face {
+    font-family: 'Anonymous Pro';
+    src: url(Font/AnonymousPro-Regular.ttf) format("truetype");
+    font-weight: 400;
+    font-display: optional;
+}
+
+
+@font-face {
+    font-family: 'Anonymous Pro';
+    src: url(Font/AnonymousPro-Bold.ttf) format("truetype");
+    font-weight: 700;
+    font-display: optional;
+}
+
 main {
     padding-top: 4rem;
     padding-bottom: 2rem;
     z-index: 0;
+    margin-bottom: 3rem;
 }
 
 @media (min-width: 40rem) {
@@ -71,6 +87,8 @@ main {
     border: 1px solid #0e4f1f;
     padding: 1rem;
     color: black;
+    font-size: 1rem;
+    /* font-style font-variant font-weight font-size/line-height font-family */
 }
 
 .clearfix {
