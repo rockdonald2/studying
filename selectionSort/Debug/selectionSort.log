@@ -1,5 +1,5 @@
 ﻿  selectionSort.cpp
-D:\GitHub\studying\selectionSort\selectionSort.cpp(5,47): warning C4018:  '<': signed/unsigned mismatch
-D:\GitHub\studying\selectionSort\selectionSort.cpp(8,65): warning C4018:  '<': signed/unsigned mismatch
-D:\GitHub\studying\selectionSort\selectionSort.cpp(26,37): warning C4018:  '<': signed/unsigned mismatch
+D:\GitHub\studying\selectionSort\selectionSort.cpp(4,47): warning C4018:  '<': signed/unsigned mismatch
+D:\GitHub\studying\selectionSort\selectionSort.cpp(7,65): warning C4018:  '<': signed/unsigned mismatch
+D:\GitHub\studying\selectionSort\selectionSort.cpp(25,37): warning C4018:  '<': signed/unsigned mismatch
   selectionSort.vcxproj -> D:\GitHub\studying\selectionSort\Debug\selectionSort.exe

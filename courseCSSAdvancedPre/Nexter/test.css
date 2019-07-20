@@ -1,0 +1,23 @@
+* {
+  box-sizing: content-box;
+  margin: 0;
+}
+
+html {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.test {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, rgba(44, 62, 80, 0.5), rgba(52, 152, 219, 0.85)), url(test.jpg) center/cover;
+}
+
+/*# sourceMappingURL=test.css.map */
