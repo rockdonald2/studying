@@ -33,6 +33,11 @@ html {
   max-width: 1140px;
   margin: 0 auto;
 }
+@media (max-width: 1240px) {
+  .row {
+    padding: 0 2rem;
+  }
+}
 
 section {
   padding: 4rem 0;
@@ -187,6 +192,12 @@ header .hero-text-box {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+@media (max-width: 1200px) {
+  header .hero-text-box {
+    width: 100%;
+    padding: 0 2rem;
+  }
 }
 
 /* features including section-features */
