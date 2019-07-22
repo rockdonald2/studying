@@ -1,0 +1,35 @@
+.flip-container {
+  perspective: 1000px;
+}
+.flip-container:hover .flipper, .flip-container.hover .fliper {
+  transform: rotateY(180deg);
+}
+.flip-container,
+.flip-container .front,
+.flip-container .back {
+  width: 320px;
+  height: 480px;
+}
+.flip-container .flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.flip-container .flipper .front,
+.flip-container .flipper .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.flip-container .flipper .front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  background-color: #555;
+}
+.flip-container .flipper .back {
+  transform: rotateY(180deg);
+  background-color: #ccc;
+}
+
+/*# sourceMappingURL=flip-cards-style.css.map */

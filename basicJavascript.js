@@ -1571,7 +1571,7 @@ function telephoneCheck(str) {
   });
 }
 
-console.log(telephoneCheck("(5555555555)")); */
+console.log(telephoneCheck("(5555555555)")); 
 
 function checkCashRegister(price, cash, cid) {
   let cidBackup = JSON.parse(JSON.stringify(cid));
@@ -1683,3 +1683,92 @@ function checkCashRegister(price, cash, cid) {
 }
 
 console.log(checkCashRegister(12.5, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+
+function convertToRoman(num) {
+  let romanNumbers = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+  let intNumbers = ["1000", "900", "500", "400", "100", "90", "50", "40", "10", "9", "5", "4", "1"];
+
+  let roman = "";
+
+  for (let i = 0; num != 0;) {
+    if (num / intNumbers[i] >= 1) {
+      num -= intNumbers[i];
+      roman += romanNumbers[i]; 
+    }
+    else {
+      i++;
+    }
+  }
+
+  return roman;
+ }
+ 
+ console.log(convertToRoman(3999)); 
+
+function factorialize(num) {
+  if (num > 1) {
+    return num * factorialize(num - 1);
+  }
+  else {
+    return 1;
+  }
+}
+
+console.log(factorialize(5)); 
+
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+  let searchLength = target.length;
+  let verdict = false;
+
+  for (let i = searchLength; i >= 0; i--) {
+    if (str[str.length - i] == target[target.length - i]) {
+      verdict = true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  return verdict;
+}
+
+console.log(confirmEnding("He has to give me a new name", "name")); */
+
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+
+  if (arr.length < 1) {
+    return 0;
+  };
+
+  let selectionSort = (arr) => {
+    for (let startIndex = 0; startIndex < arr.length - 1; startIndex++) {
+      let smallestIndex = startIndex;
+
+      for (let currentIndex = startIndex + 1; currentIndex < arr.length; currentIndex++) {
+        if (arr[currentIndex] < arr[smallestIndex]) {
+          smallestIndex = currentIndex;
+        }
+      }
+
+      [arr[startIndex], arr[smallestIndex]] = [arr[smallestIndex], arr[startIndex]];
+    }
+
+    return arr;
+  };
+
+  if (selectionSort(arr).findIndex((element) => {
+    return element >= num;
+  }) == -1 && arr[arr.length - 1] < num) {
+    return arr.length;
+  }
+  else {
+    return selectionSort(arr).findIndex((element) => {
+      return element >= num;
+    });
+  }
+}
+
+console.log(getIndexToIns([10, 20, 30, 40, 50], 35));
