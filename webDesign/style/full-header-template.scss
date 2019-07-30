@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+
+$general-size: 1.2rem;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html {
+    body {
+        header {
+            width: 100vw;
+            height: 7vh;
+            background-color: #b3b3b3ec;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+
+            h1 {
+                display: flex;
+                align-items: center;
+                margin-left: $general-size * 4;
+                img {
+                    width: $general-size * 2;
+                    height: $general-size * 2;
+                }
+            }
+
+            nav {
+                width: calc(100vw - 45vw);
+                margin: 0 auto;
+
+                ul {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: $general-size;
+                    font-weight: 300;
+
+                    li {
+                        a {
+                            text-decoration: none;
+                            color: #333;
+                            position: relative;
+                            text-transform: uppercase;
+                            transition: 0.25s;
+
+                            &:hover {
+                                color: #555;
+                            }
+
+                            &:before {
+                                content:"";
+                                position: absolute;
+                                height: 2px;
+                                width: 100%;
+                                left: 0;
+                                bottom: -13px;
+                                visibility: hidden;
+                                transform: scaleX(0);
+                                background-color: #666;
+                                transition: all 0.25s ease-in-out;
+                            }
+
+                            &:hover:before {
+                                visibility: visible;
+                                transform: scaleX(1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
