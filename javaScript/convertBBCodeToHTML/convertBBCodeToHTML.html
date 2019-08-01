@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <link rel="stylesheet"
+            type="text/css"
+            href="convertBBCodeToHTML.css">
+    </head>
+
+    <div class="container">
+        <form class="form"
+            action="#"
+            method="get">
+            <label class="label"
+                for="bbcode">Convert BBCode to HTML</label>
+            <input class="input"
+                id="input"
+                type="text"
+                name="bbcode"
+                placeholder="Enter some BBCode..."
+                required>
+            <input class="button"
+                type="button"
+                value="Convert"
+                for="bbcode"
+                onclick="getBBCode()">
+        </form>
+
+        <p class="paragraph"
+            id="p">
+
+        </p>
+    </div>
+
+    <script type="text/javascript"
+        src="convertBBCodeToHTML.js"></script>
+
+</html>

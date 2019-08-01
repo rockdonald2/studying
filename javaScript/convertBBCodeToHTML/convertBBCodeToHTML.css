@@ -1,0 +1,30 @@
+body {
+    position: relative;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ccc;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 15px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.label,
+.input,
+.button {
+    display: block;
+    margin: 0 auto;
+}
+
+.label,
+.input {
+    text-align: center;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
