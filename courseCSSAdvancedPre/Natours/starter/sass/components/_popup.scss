@@ -81,8 +81,9 @@
         transform: scale(1.1);
 
         @include respond(tab-port) {
-            width: 49.8%;
-            display: inline-block;
+            width: 50%;
+            float: left;
+            height: 100%;
         }
     }
 
