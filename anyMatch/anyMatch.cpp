@@ -146,7 +146,7 @@ bool anyMatch(std::string str = "", std::string regEx = "") {
 					++itCharSet;
 				}
 
-				/* a kurva nagy problema az, hogy resetelni kene az iterator minden egyes talalat eseten */
+				/* a kurva nagy problema az, hogy resetelni kene az iterator minden egyes talalat eseten0*/
 			}
 
 			// ha nem volt egyetlen egyezes sem teriti a found-ot ami == false
