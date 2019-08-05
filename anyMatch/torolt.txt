@@ -1,0 +1,95 @@
+if (j == indexOfPresentChars.size()) {
+					while (i <= charsToCompare) {
+						missingChars.push_back(str[i]);
+						++i;
+					}
+
+					break;
+				}
+
+				if (i == indexOfPresentChars[j]) {
+					j++;
+					continue;
+				}
+				else {
+					missingChars.push_back(str[i]);
+				}
+
+                else if (regEx.find("-") != std::string::npos) {
+			// ha egy halmazt adtunk meg a regex-ben
+			std::string charSet = "";
+
+			for (unsigned int it = int(regEx[openingBracketPos + 1]); it <= int(regEx[closingBracketPos - 1]); ++it) {
+				charSet.push_back(char(it));
+			}
+
+			// megnezzuk hany karakternek kell megfeleljen a karakter set
+			int charsToCompare = str.length();
+			std::string missingChars; // hianyzo karakterek
+			std::vector<std::size_t> indexOfPresentChars;
+			int numOfCharsOutsideOfTheBrackets = 0;
+
+			for (std::size_t itStr = 0, itRegEx = 1; itStr < str.length() - 1; ++itRegEx) {
+				if (str[itStr] == regEx[itRegEx]) {
+					++numOfCharsOutsideOfTheBrackets;
+					indexOfPresentChars.push_back(itStr);
+					continue;
+				}
+				else if (regEx[itRegEx] == '[') {
+					itRegEx = closingBracketPos;
+				}
+				else if (itRegEx == regEx.length() - 1) {
+					break;
+				}
+			}
+
+			charsToCompare -= numOfCharsOutsideOfTheBrackets;
+			for (unsigned int i = 0, j = 0; i < charsToCompare; ++i) {
+				if (j == indexOfPresentChars.size()) {
+					while (i <= charsToCompare) {
+						missingChars.push_back(str[i]);
+						++i;
+					}
+
+					break;
+				}
+
+				if (i == indexOfPresentChars[j]) {
+					j++;
+					continue;
+				}
+				else {
+					missingChars.push_back(str[i]);
+				}
+			}
+
+			// tenyleges ellenorzes
+			std::string::const_iterator itCharSet = charSet.begin();
+			for (std::size_t it = 0; it < charsToCompare;) {
+				if (*itCharSet == missingChars[it]) {
+					found = true;
+					regEx.push_back(*itCharSet);
+					++it;
+					itCharSet = charSet.begin();
+				}
+				else {
+					++itCharSet;
+				}
+			}
+
+			// ha nem volt egyetlen egyezes sem teriti a found-ot ami == false
+			if (!found) {
+				return found;
+			}
+
+			if (openingBracketPos == 1 && closingBracketPos == regEx.length() - 2) {
+				return found;
+			}
+			else {
+				// ha nem csak a karakter settet tartalmazza rekurziv modon vizsgalja a regex tobbi reszevel a stringet
+				regEx.erase(openingBracketPos, charSetLength);
+				regEx.insert(openingBracketPos, regEx.substr(regEx.find_last_of("/") + 1));
+				regEx.erase(regEx.find_last_of("/") + 1);
+
+				return anyMatch(str, regEx);
+			}

@@ -1,7 +1,5 @@
 ﻿  anyMatch.cpp
-D:\GitHub\studying\anyMatch\anyMatch.cpp(73,65): warning C4018:  '<=': signed/unsigned mismatch
-D:\GitHub\studying\anyMatch\anyMatch.cpp(93,65): warning C4018:  '<=': signed/unsigned mismatch
-D:\GitHub\studying\anyMatch\anyMatch.cpp(118,38): warning C4018:  '<': signed/unsigned mismatch
-D:\GitHub\studying\anyMatch\anyMatch.cpp(120,15): warning C4018:  '<': signed/unsigned mismatch
-D:\GitHub\studying\anyMatch\anyMatch.cpp(139,32): warning C4018:  '<': signed/unsigned mismatch
+D:\GitHub\studying\anyMatch\anyMatch.cpp(67,65): warning C4018:  '<=': signed/unsigned mismatch
+D:\GitHub\studying\anyMatch\anyMatch.cpp(87,64): warning C4018:  '<=': signed/unsigned mismatch
+D:\GitHub\studying\anyMatch\anyMatch.cpp(150,31): warning C4018:  '<': signed/unsigned mismatch
   anyMatch.vcxproj -> D:\GitHub\studying\anyMatch\Debug\anyMatch.exe

@@ -1,3 +1,0 @@
-C:\Users\Lukács Zsolt\Documents\GitHub\studying\NodejsWebApp1\obj\Debug\NodejsWebApp1.njsprojAssemblyReference.cache
-C:\Users\Lukács Zsolt\Documents\GitHub\studying\NodejsWebApp1\obj\Debug\NodejsWebApp1.njsproj.CoreCompileInputs.cache
-C:\Users\Lukács Zsolt\Documents\GitHub\studying\NodejsWebApp1\bin\Microsoft.NodejsTools.WebRole.dll
