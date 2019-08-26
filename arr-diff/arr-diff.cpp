@@ -33,7 +33,7 @@ int main(void) {
 
 	std::vector<int> uniqueArr = arrDiff(arr1, arr2);
 
-	for (std::vector<int>::iterator it = uniqueArr.begin(); it != uniqueArr.end(); ++it) {
+	for (std::vector<int>::const_iterator it = uniqueArr.begin(); it != uniqueArr.end(); ++it) {
 		std::cout << *it << ' ';
 	}
 
