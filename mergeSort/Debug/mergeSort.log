@@ -1,0 +1,3 @@
+﻿  mergeSort.cpp
+D:\GitHub\studying\mergeSort\mergeSort.cpp(49,11): warning C4244:  'initializing': conversion from 'double' to 'int', possible loss of data
+  mergeSort.vcxproj -> D:\GitHub\studying\mergeSort\Debug\mergeSort.exe
