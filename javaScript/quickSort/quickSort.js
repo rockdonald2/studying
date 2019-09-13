@@ -28,5 +28,5 @@ let quickSort = (arr, low, high) => {
     return arr;
 }
 
-list = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92];
-console.log(quickSort(list, 0, list.length - 1));
+let array = [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92];
+console.log(quickSort(array, 0, array.length - 1));

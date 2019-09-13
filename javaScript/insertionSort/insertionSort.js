@@ -13,5 +13,5 @@ let insertionSort = (array) => {
     return array;
 }
 
-list = [12, 11, 13, 5, 6];
+let list = [12, 11, 13, 5, 6];
 console.log(insertionSort(list));
