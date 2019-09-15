@@ -1,0 +1,3 @@
+﻿  reverseVector.cpp
+D:\GitHub\studying\reverseVector\reverseVector.cpp(10,11): warning C4018:  '<': signed/unsigned mismatch
+  reverseVector.vcxproj -> D:\GitHub\studying\reverseVector\Debug\reverseVector.exe
