@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -8,9 +9,7 @@ vector<int> reverseArray(vector<int> a) {
 	int j = a.size() - 1;
 
 	for (; i < a.size() / 2; ++i, --j) {
-		int temp = a[i];
-		a[i] = a[j];
-		a[j] = temp;
+		std::swap(a[i], a[j]);
 	}
 
 	return a;
