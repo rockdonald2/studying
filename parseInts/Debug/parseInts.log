@@ -1,0 +1,4 @@
+﻿  parseInts.cpp
+D:\GitHub\studying\parseInts\parseInts.cpp(12,7): warning C4101:  'ch': unreferenced local variable
+D:\GitHub\studying\parseInts\parseInts.cpp(40,20): warning C4018:  '<': signed/unsigned mismatch
+  parseInts.vcxproj -> D:\GitHub\studying\parseInts\Debug\parseInts.exe

@@ -1,0 +1,3 @@
+﻿  vectorErase.cpp
+D:\GitHub\studying\vectorErase\vectorErase.cpp(14,25): warning C4018:  '<': signed/unsigned mismatch
+  vectorErase.vcxproj -> D:\GitHub\studying\vectorErase\Debug\vectorErase.exe

@@ -1,0 +1,4 @@
+﻿  binomialDistribution.cpp
+D:\GitHub\studying\binomialDistribution\binomialDistribution.cpp(60,29): warning C4018:  '<=': signed/unsigned mismatch
+D:\GitHub\studying\binomialDistribution\binomialDistribution.cpp(64,29): warning C4018:  '<=': signed/unsigned mismatch
+  binomialDistribution.vcxproj -> D:\GitHub\studying\binomialDistribution\Debug\binomialDistribution.exe
