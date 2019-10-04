@@ -1,0 +1,11 @@
+D:\GitHub\studying\helloWorldCSharp\obj\Debug\netcoreapp2.1\helloWorldCSharp.csprojAssemblyReference.cache
+D:\GitHub\studying\helloWorldCSharp\obj\Debug\netcoreapp2.1\helloWorldCSharp.csproj.CoreCompileInputs.cache
+D:\GitHub\studying\helloWorldCSharp\obj\Debug\netcoreapp2.1\helloWorldCSharp.AssemblyInfoInputs.cache
+D:\GitHub\studying\helloWorldCSharp\obj\Debug\netcoreapp2.1\helloWorldCSharp.AssemblyInfo.cs
+D:\GitHub\studying\helloWorldCSharp\bin\Debug\netcoreapp2.1\helloWorldCSharp.deps.json
+D:\GitHub\studying\helloWorldCSharp\bin\Debug\netcoreapp2.1\helloWorldCSharp.runtimeconfig.json
+D:\GitHub\studying\helloWorldCSharp\bin\Debug\netcoreapp2.1\helloWorldCSharp.runtimeconfig.dev.json
+D:\GitHub\studying\helloWorldCSharp\bin\Debug\netcoreapp2.1\helloWorldCSharp.dll
+D:\GitHub\studying\helloWorldCSharp\bin\Debug\netcoreapp2.1\helloWorldCSharp.pdb
+D:\GitHub\studying\helloWorldCSharp\obj\Debug\netcoreapp2.1\helloWorldCSharp.dll
+D:\GitHub\studying\helloWorldCSharp\obj\Debug\netcoreapp2.1\helloWorldCSharp.pdb
