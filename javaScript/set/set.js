@@ -1,93 +1,93 @@
 class Set {
-  constructor() {
-      this.collection = [];
-  }
+    constructor() {
+        this.collection = [];
+    }
 
-  has(elem) {
-      return (this.collection.indexOf(elem) !== -1);
-  }
+    has(elem) {
+        return (this.collection.indexOf(elem) !== -1);
+    }
 
-  values() {
-      return this.collection;
-  }
+    values() {
+        return this.collection;
+    }
 
-  add(elem) {
-      if (!this.has(elem)) {
-          this.collection.push(elem);
-          return true;
-      } else {
-          return false;
-      }
-  }
+    add(elem) {
+        if (!this.has(elem)) {
+            this.collection.push(elem);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-  remove(elem) {
-      if (this.has(elem)) {
-          this.collection.splice(this.collection.indexOf(elem), 1);
-          return true;
-      } else {
-          return false;
-      }
-  }
+    remove(elem) {
+        if (this.has(elem)) {
+            this.collection.splice(this.collection.indexOf(elem), 1);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-  size() {
-      return this.collection.length;
-  }
+    size() {
+        return this.collection.length;
+    }
 
-  union(unionMember) {
-      let setA = this.values();
-      let setB = unionMember.values();
+    union(unionMember) {
+        let setA = this.values();
+        let setB = unionMember.values();
 
-      let unionSet = new Set();
+        let unionSet = new Set();
 
-      setA.forEach((item) => {
-          unionSet.add(item);
-      });
-      setB.forEach((item) => {
-          unionSet.add(item);
-      });
+        setA.forEach((item) => {
+            unionSet.add(item);
+        });
+        setB.forEach((item) => {
+            unionSet.add(item);
+        });
 
-      return unionSet;
-  }
+        return unionSet;
+    }
 
-  intersection(member) {
-      let intersection = new Set();
-      let setA = this.values();
+    intersection(member) {
+        let intersection = new Set();
+        let setA = this.values();
 
-      setA.forEach((item) => {
-          if (member.has(item)) {
-              intersection.add(item);
-          }
-      });
+        setA.forEach((item) => {
+            if (member.has(item)) {
+                intersection.add(item);
+            }
+        });
 
-      return intersection;
-  }
+        return intersection;
+    }
 
-  difference(member) {
-      let difference = new Set();
-      let setA = this.values();
+    difference(member) {
+        let difference = new Set();
+        let setA = this.values();
 
-      setA.forEach((item) => {
-          if (!member.has(item)) {
-              difference.add(item);
-          }
-      });
+        setA.forEach((item) => {
+            if (!member.has(item)) {
+                difference.add(item);
+            }
+        });
 
-      return difference;
-  }
+        return difference;
+    }
 
-  subset(member) {
-      let hash = new Set();
+    subset(member) {
+        let hash = new Set();
 
-      this.values().forEach((item) => {
-          if (member.has(item)) {
-              hash.add(item);
-          }
-      });
+        this.values().forEach((item) => {
+            if (member.has(item)) {
+                hash.add(item);
+            }
+        });
 
-      if (hash.size() === this.size()) {
-          return true;
-      } else {
-          return false;
-      }
-  }
+        if (hash.size() === this.size()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
