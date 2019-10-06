@@ -82,11 +82,42 @@ function DoublyLinkedList() {
     this.isEmpty = function () {
         return length === 0;
     }
+
+    this.reverse = function () {
+        let temp = null;
+        let current = head;
+
+        while (current) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+
+
+        if (temp) {
+            head = temp.prev;
+
+            let it = head.next;
+
+            while (it) {
+                if (!it.next) {
+                    tail = it;
+                }
+
+                it = it.next;
+            }
+        }
+
+        return null;
+    }
 }
 
 let test = new DoublyLinkedList();
 test.add(5);
 test.add(6);
-test.add(723);
+test.add(7);
+test.add(8);
+test.reverse();
 console.log(test.head());
 console.log(test.tail());
