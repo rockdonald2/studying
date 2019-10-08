@@ -14,11 +14,11 @@
 } */
 
 const leftRotate = (array, numberOfRotates) => {
-    let temp = array.splice(0, d);
+    let temp = array.splice(0, numberOfRotates);
     array.splice(array.length, 0, ...temp);
     return array;
 }
 
 const a = [1, 2, 3, 4, 5];
 const d = 4;
-console.log(leftRotate(a, d));
+console.log(leftRotate(a, d).join(' '));
