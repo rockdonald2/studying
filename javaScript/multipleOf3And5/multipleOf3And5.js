@@ -15,4 +15,4 @@ function multiplesOf3and5(number) {
     return sum;
 }
 
-console.log(multiplesOf3and5(1000));
+console.log(multiplesOf3and5(49));

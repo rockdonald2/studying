@@ -91,3 +91,15 @@ class Set {
         }
     }
 }
+
+let test = new Set();
+test.add('a');
+test.add('b');
+test.add('c');
+let test2 = new Set();
+test2.add('a');
+test2.add('b');
+test2.add('d');
+test2.add('e');
+console.log(test.union(test2));
+console.log(test.difference(test2));
