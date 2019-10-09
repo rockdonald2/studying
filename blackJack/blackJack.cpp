@@ -1,5 +1,6 @@
 #include <iostream>
 #include <array>
+#include <vector>
 #include <ctime> // for time()
 #include <cstdlib> // for rand() and srand()
 
@@ -43,6 +44,8 @@ struct Card {
 class Blackjack {
 private:
 	std::array<Card, 52> m_deck;
+	std::vector<Card> m_playerCards;
+	std::vector<Card> m_dealerCards;
 
 	int getRandomNumber(int min, int max) {
 		static constexpr double fraction{ 1.0 / (RAND_MAX + 1.0) };  // static used for efficiency, so we only calculate this value once
@@ -128,6 +131,9 @@ public:
 				++card;
 			}
 		}
+
+		m_playerCards.reserve(26);
+		m_dealerCards.reserve(26);
 	}
 
 	void printCard(const Card& card) {
@@ -150,10 +156,10 @@ public:
 		}
 
 		switch (card.suit) {
-			case CardSuit::SUIT_CLUB: cout << 'C'; break;
-			case CardSuit::SUIT_DIAMOND: cout << 'D'; break;
-			case CardSuit::SUIT_HEART: cout << 'H'; break;
-			case CardSuit::SUIT_SPADE: cout << 'S'; break;
+			case CardSuit::SUIT_CLUB: cout << "C\n"; break;
+			case CardSuit::SUIT_DIAMOND: cout << "D\n"; break;
+			case CardSuit::SUIT_HEART: cout << "H\n"; break;
+			case CardSuit::SUIT_SPADE: cout << "S\n"; break;
 		}
 	}
 
@@ -178,10 +184,16 @@ public:
 		int playerTotal = 0;
 		int dealerTotal = 0;
 
+		m_dealerCards.push_back(*cardPtr);
+		printCard(*cardPtr);
 		dealerTotal += getCardValue(*cardPtr++);
 		cout << "The dealer is showing " << dealerTotal << endl;
 
+		m_playerCards.push_back(*cardPtr);
+		printCard(*cardPtr);
 		playerTotal += getCardValue(*cardPtr++);
+		m_playerCards.push_back(*cardPtr);
+		printCard(*cardPtr);
 		playerTotal += getCardValue(*cardPtr++);
 
 		while (true) {
@@ -190,6 +202,8 @@ public:
 			char choice = getPlayerChoice();
 
 			if (choice == 'h') {
+				m_playerCards.push_back(*cardPtr);
+				printCard(*cardPtr);
 				playerTotal += getCardValue(*cardPtr++);
 			}
 			else if (choice == 's') {
@@ -197,27 +211,35 @@ public:
 			}
 
 			if (playerTotal > 21) {
+				cout << "The player is showing " << playerTotal << endl;
 				evaluateGame(Verdict::VERDICT_LOST);
+				return;
 			}
 		}
 
 		while (dealerTotal < 17) {
+			m_dealerCards.push_back(*cardPtr);
+			printCard(*cardPtr);
 			dealerTotal += getCardValue(*cardPtr++);
 			cout << "The dealer is showing " << dealerTotal << endl;
 		}
 
 		if (dealerTotal > 21) {
 			evaluateGame(Verdict::VERDICT_WON);
+			return;
 		}
 
 		if (playerTotal > dealerTotal) {
 			evaluateGame(Verdict::VERDICT_WON);
+			return;
 		}
 		else if (playerTotal < dealerTotal) {
 			evaluateGame(Verdict::VERDICT_LOST);
+			return;
 		}
 		else {
 			evaluateGame(Verdict::VERDICT_DRAW);
+			return;
 		}
 	}
 };
