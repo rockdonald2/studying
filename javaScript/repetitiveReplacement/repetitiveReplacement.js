@@ -36,6 +36,8 @@ function replacement(arr) {
         return arr;
     }
 
+    console.log(arr);
+
     return replacement(arr);
 }
 
