@@ -1,23 +1,42 @@
-const factorial = (a) => {
-    if (a <= 1) {
+/*
+    @param n // represents the number to factoralise
+    @description // simple factorial function
+    @return int
+*/
+
+const factorial = (n) => {
+    if (n <= 1) {
         return 1;
     } else {
-        return a * factorial(a - 1);
+        return n * factorial(n - 1);
     }
-};
+}
 
-console.log(factorial(5));
+/* console.log(factorial(-1));
+console.log(factorial(5)); */
 
-const pascalTriangle = (nOfRows) => {
-    let currentLine = [1];
 
-    let currentLineSize = nOfRows + 1;
+/*
+    @param n // nth row to return of Pascal Triangle
+    @description a function which returns the nth row of Pascal Triangle
+    @return array@int
+*/
 
-    for (let c = 1; c < currentLineSize; c++) {
-        currentLine[c] = currentLine[c - 1] * (nOfRows - c + 1) / c;
-    }
+const pascalTriangle = (n) => {
+    // any row starts with 1 in Pascal Triangle
+    let a = [1];
 
-    return currentLine;
-};
+    let aSize = n + 1;
 
-console.log(pascalTriangle(4));
+    /* for (let i = 1; i < aSize; i++) {
+        a[i] = a[i - 1] * (n - i + 1) / i;
+    } */
+
+    /* for (let i = 1; i < aSize; i++) {
+        a[i] = factorial(n) / (factorial(i) * factorial(n - i));
+    } */
+
+    return a;
+}
+
+console.log(pascalTriangle(2));
