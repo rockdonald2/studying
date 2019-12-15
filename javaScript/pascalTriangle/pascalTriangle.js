@@ -24,13 +24,20 @@ console.log(factorial(5)); */
 
 const pascalTriangle = (n) => {
     // any row starts with 1 in Pascal Triangle
-    let a = [1];
+    let a = [[1]];
 
-    let aSize = n + 1;
+    //let aSize = n + 1;
 
-    /* for (let i = 1; i < aSize; i++) {
-        a[i] = a[i - 1] * (n - i + 1) / i;
-    } */
+    let t = 1;
+    let tSize = t + 1;
+    for (;t <= n; t++) {
+        tSize = t + 1;
+        a.push([1]);
+
+        for (let i = 1; i < tSize; i++) {
+            a[t][i] = a[t][i - 1] * (t - i + 1) / i;
+        }
+    }
 
     /* for (let i = 1; i < aSize; i++) {
         a[i] = factorial(n) / (factorial(i) * factorial(n - i));
@@ -39,4 +46,4 @@ const pascalTriangle = (n) => {
     return a;
 }
 
-console.log(pascalTriangle(2));
+console.log(pascalTriangle(5));
