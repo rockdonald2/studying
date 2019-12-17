@@ -1,0 +1,3 @@
+﻿  meanMedianMode.cpp
+D:\GitHub\studying\meanMedianMode\meanMedianMode.cpp(39,14): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+  meanMedianMode.vcxproj -> D:\GitHub\studying\meanMedianMode\Debug\meanMedianMode.exe
