@@ -22,3 +22,4 @@ function lonelyinteger(a) {
 }
 
 console.log(lonelyinteger([0, 0, 1, 2, 1]));
+console.log(lonelyinteger([1, 4, 3, 1, 1, 3]));
