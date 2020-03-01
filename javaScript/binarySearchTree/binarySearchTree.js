@@ -369,7 +369,7 @@ class BinarySearchTree {
                                 parent.left = replacement;
                             } else {
                                 parent.right = replacement;
-                            }
+                            }   
 
 
                             return null;
