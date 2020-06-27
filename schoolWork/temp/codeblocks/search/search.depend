@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1582696607 source:/home/osboxes/Documents/Programok/codeblocks/search/main.c
+	<stdio.h>
+	<stdlib.h>
+

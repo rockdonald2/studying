@@ -1,0 +1,13 @@
+	Rekord
+
+A jegyzek szakmunkasai
+Nev - Fizetes - Szak
+Mate Tamas - 1340.00 - Komuves
+
+A jegyzek mernokei
+Nev - Fizetes - Egyetem - Zaroev
+Peter Tamaska - 2340.00 - Babes Bolyai Tudomanyegyetem - 2019
+
+A jegyzek konyveloi
+Nev - Fizetes - Lekonyvelt evek - Gyerekek szama
+Kovacs Peter - 1354.00 - 2 - 2
