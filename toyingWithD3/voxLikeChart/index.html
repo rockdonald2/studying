@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <script>
+        window.onbeforeunload = () => {
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Yield Curves</title>
+        <link rel="stylesheet"
+            href="style.css">
+    </head>
+
+    <body class="hidden">
+        <div class="overlay show">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+            <p>Currently fetching data...</p>
+            <p>This vizualization is optimized for min screen pixel-width of 1250px.</p>
+        </div>
+
+        <main class="container">
+            <header class="header">
+                <h1 class="header--heading">Yield Curves</h1>
+                <p class="header--info">A chart, mainly used by economic experts and investors, called the <span
+                        class="emphasize">"yield curve"</span> may be
+                    able to predict any recessions. But, what does it actually show? I visualized the Euro-Area yield curves for
+                    the past 16 years, for every month, so we are able to perceive what it actually means when the curve changes.
+                </p>
+            </header>
+            <section class="charts">
+                <div class="tooltip"></div>
+            </section>
+            <section class="explanation">
+                <p class="explanation--text">
+                    When a yield curve is inverted, it is almost always never a good sign. An inverted yield curve means, that the
+                    <span class="emphasize">demand for long-term bonds increased significantly</span>, and the demand for
+                    short-term (2-3-year) plummeted.
+                </p>
+                <p class="explanation--text">
+                    If that's the case it might be a sign of recession, because if enough investors think that investing in short
+                    term returns is not a good idea, an economic downturn is inevitable. If a yield curve is inverted, investors
+                    think that an economic downturn is incoming, that is what happened in early '06, and that is what's happening
+                    right now, due to <span class="emphasize">COVID-19</span>.
+                </p>
+                <p class="explanation--text">
+                    So, is a recession coming in '20? <span class="emphasize">Nobody knows</span>, because financial experts with
+                    the proper means, can evade it. Anyway, yield curves are a good way to predict recessions, and that's why some
+                    experts freak out when inversion happens.
+                </p>
+            </section>
+            <footer class="footer">
+                <h1 class="footer--heading">Sources</h1>
+                <ul>
+                    <li class="footer--source"><a
+                            href="https://appsso.eurostat.ec.europa.eu/nui/show.do?query=BOOKMARK_DS-054438_QID_5783842B_UID_-3F171EB0&layout=TIME,C,X,0;MATURITY,L,Y,0;YLD_CURV,L,Z,0;GEO,L,Z,1;BONDS,L,Z,2;INDICATORS,C,Z,3;&zSelection=DS-054438BONDS,CGB_EA_AAA;DS-054438INDICATORS,OBS_FLAG;DS-054438YLD_CURV,SPOT_RT;DS-054438GEO,EA;&rankName1=TIME_1_0_0_0&rankName2=GEO_1_2_-1_2&rankName3=YLD-CURV_1_2_-1_2&rankName4=MATURITY_1_2_0_1&rankName5=BONDS_1_2_-1_2&rankName6=INDICATORS_1_2_-1_2&sortC=ASC_-1_FIRST&rStp=&cStp=&rDCh=&cDCh=&rDM=true&cDM=true&footnes=false&empty=false&wai=false&time_mode=NONE&time_most_recent=false&lang=EN&cfo=%23%23%23%2C%23%23%23.%23%23%23"
+                            target="_blank"
+                            rel="noopener noreferrer">Ec.europa.eu</a></li>
+                </ul>
+            </footer>
+        </main>
+
+        <script src="https://d3js.org/d3.v4.min.js"
+            defer></script>
+        <script src="main.js"
+            defer></script>
+    </body>
+
+</html>

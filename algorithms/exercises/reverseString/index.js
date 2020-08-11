@@ -52,15 +52,19 @@
     return reversed;
 } */
 
-// 5. megoldás
 function reverse(str) {
-    /* node debugger mód, $ node inspect index.js */
-    debugger;
-
-    return str.split('').reduce((rev, c) => c + rev, '');
+    return str.split('').reduce((r, c) => c + r, '');
 }
 
 /* debughoz kell */
-reverse('asdf');
+/* reverse('asdf'); */
 
 module.exports = reverse;
+
+// 5. megoldás
+/* function reverse(str) {
+    // node debugger mód, $ node inspect index.js
+    debugger;
+
+    return str.split('').reduce((rev, c) => c + rev, '');
+} */
