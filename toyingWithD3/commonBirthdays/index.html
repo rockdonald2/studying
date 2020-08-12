@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <script>
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Birthdays</title>
+        <link rel="stylesheet"
+            href="style.css">
+    </head>
+
+    <body>
+        <!-- betöltési overlay és animáció -->
+        <div class="overlay show">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <p>Currently fetching data...</p>
+            <p>This vizualization is optimized for min screen pixel-width of 1250px.</p>
+        </div>
+
+        <main class="container">
+            <header class="header">
+                <h1 class="header--heading">how common<span>is your birthday</span>in the United Kingdom during the last 20 years
+                </h1>
+                <p class="header--description">On the below chart one can inspect how common is their or someone else's birthday.
+                    For
+                    the displayed ratio, first, I calculated the 23-year period average for that arbitrary day, than I compared
+                    that average to the yearly average. The dataset contains data from 1995 up until 2018.</p>
+            </header>
+            <section class="chart">
+                <div class="tooltip">
+                    <h3 class="tooltip--heading"></h3>
+                    <div class="tooltip--info"></div>
+                </div>
+            </section>
+            <footer class="footer">
+                <h1 class="footer--heading">
+                    Source
+                </h1>
+                <ul>
+                    <li class="footer--source"><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/datasets/birthcharacteristicsinenglandandwales" target="_blank" rel="noopener noreferrer">Ons.gov.uk</a></li>
+                </ul>
+            </footer>
+        </main>
+
+        <script src="https://d3js.org/d3.v4.min.js"
+            defer></script>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"
+            defer></script>
+        <script src="main.js"
+            defer></script>
+    </body>
+
+</html>

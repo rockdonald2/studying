@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+::-moz-selection {
+    background-color: rgba(#fcd025, .5);
+}
+
+::selection {
+    background-color: rgba(#fcd025, .5);
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Mulish',
+        sans-serif;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 3rem;
+    background-color: #fafafa;
+    color: #222;
+}
+
+.container {
+    width: 125rem;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--heading {
+        width: 30%;
+        text-align: center;
+        font-size: 2.4rem;
+        font-weight: 400;
+        opacity: .75;
+        line-height: 3.1rem;
+
+        span {
+            display: block;
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 4rem;
+        }
+    }
+
+    &--description {
+        width: 70%;
+        text-align: right;
+        font-size: 1.8rem;
+        font-weight: 400;
+        opacity: .75;
+        line-height: 2.5rem;
+        padding-left: 10rem;
+    }
+}
+
+.chart {
+    width: 100%;
+    height: 65rem;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    &--heading {
+        font-size: 2.4rem;
+        font-weight: 400;
+        opacity: .75;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    &--source {
+        background-color: rgba(#fcd025, .5);
+        padding: .5rem 0;
+        transition: all .15s;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 1.5rem;
+            opacity: .75;
+            padding: .5rem 1.25rem;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: rgba(#fcd025, 1);
+        }
+    }
+}
+
+.tooltip {
+    position: absolute;
+    left: -9999px;
+    pointer-events: none;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+        0 100px 80px rgba(0, 0, 0, 0.12);
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #fafafa;
+    text-align: center;
+    transition: none;
+    z-index: 3;
+
+    max-width: 20rem;
+
+    &--heading {
+        font-size: 1.5rem;
+        margin-bottom: .5rem;
+    }
+
+    &--info {
+        font-size: 1.3rem;
+
+        & p:not(:first-of-type) {
+            margin-top: .25rem;
+        }
+
+        span {
+            font-weight: 800;
+            opacity: .75;
+        }
+    }
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.overlay {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    left: 0vw;
+    top: 0vh;
+    transform: translateX(-9999px);
+    background-color: #fff;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+
+    p:nth-child(2) {
+        margin-bottom: 2rem;
+    }
+
+    p:nth-child(3) {
+        color: hsl(0, 0%, 60%);
+        opacity: 0.5;
+    }
+
+    &.show {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+
+    position: relative;
+    margin: 50px auto;
+}
+
+.double-bounce1,
+.double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #fcd025;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+
+    0%,
+    100% {
+        -webkit-transform: scale(0.0)
+    }
+
+    50% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes sk-bounce {
+
+    0%,
+    100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+
+    50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
