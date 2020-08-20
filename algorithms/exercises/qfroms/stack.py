@@ -1,17 +1,17 @@
-class Queue():
+class Stack():
     def __init__(self):
         self._container = []
 
-    def add(self, elem):
-        self._container.insert(0, elem)
+    def push(self, record):
+        self._container.append(record)
 
-    def remove(self):
+    def pop(self):
         try:
             return self._container.pop()
         except IndexError:
             return None
 
-    def first(self):
+    def peek(self):
         try:
             return self._container[len(self._container) - 1]
         except:

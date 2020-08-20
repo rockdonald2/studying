@@ -11,7 +11,7 @@ class Queue():
         except IndexError:
             return None
 
-    def first(self):
+    def peek(self):
         try:
             return self._container[len(self._container) - 1]
         except:

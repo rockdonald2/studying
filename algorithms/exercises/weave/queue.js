@@ -1,13 +1,14 @@
 /* 
-* --- Directions
-* Queue is a container of sort, it represents a FIFO scheme, where the first entered
-* element will be the first that leaves the container.
-* The order in which the element entered the container, will be the order in which it leaves.
-* --- Examples
-* const q = new Queue();
-* q.add(1);
-* q.remove(); // returns 1
+ * --- Directions
+ * Queue is a container of sort, it represents a FIFO scheme, where the first entered
+ * element will be the first that leaves the container.
+ * The order in which the element entered the container, will be the order in which it leaves.
+ * --- Examples
+ * const q = new Queue();
+ * q.add(1);
+ * q.remove(); // returns 1
 */
+
 class Queue {
     // private declaration, cannot be accessed from outside the class
     #container = []
@@ -16,9 +17,9 @@ class Queue {
         this.#container = [];
     }
 
-    // getter
-    // gets the first element in the queue
-    get first() {
+    // peek method
+    // returns the last element from the queue *without* removing it
+    peek() {
         return this.#container[this.#container.length - 1];
     }
 

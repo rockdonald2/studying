@@ -1,0 +1,11 @@
+{
+    "name": "dev",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "jest": {
+        "testEnvironment": "node"
+    },
+    "author": "stephen grider",
+    "license": "ISC"
+}
