@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\probavizsga.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\probavizsga.dir/objects.a @CMakeFiles\probavizsga.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\probavizsga.dir/objects.a -Wl,--no-whole-archive  -o probavizsga.exe -Wl,--out-implib,libprobavizsga.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\probavizsga.dir\linklibs.rsp

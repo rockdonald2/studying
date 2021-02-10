@@ -1,0 +1,7 @@
+Koltoztess egy korongot A-rol a B-re
+Koltoztess egy korongot A-rol a C-re
+Koltoztess egy korongot B-rol a C-re
+Koltoztess egy korongot A-rol a B-re
+Koltoztess egy korongot C-rol a A-re
+Koltoztess egy korongot C-rol a B-re
+Koltoztess egy korongot A-rol a B-re

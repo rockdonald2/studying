@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/vizsga/feladat_1.cpp
+iostream
+-
+vector
+-
+fstream
+-
+

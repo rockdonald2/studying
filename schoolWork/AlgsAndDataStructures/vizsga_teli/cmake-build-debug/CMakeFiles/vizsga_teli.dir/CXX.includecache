@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/vizsga_teli/feladat_2.cpp
+iostream
+-
+feladat_2.h
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/vizsga_teli/feladat_2.h
+
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/vizsga_teli/feladat_2.h
+iostream
+-
+vector
+-
+

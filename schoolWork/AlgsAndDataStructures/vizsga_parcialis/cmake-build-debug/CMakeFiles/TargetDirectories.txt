@@ -1,0 +1,3 @@
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/vizsga/cmake-build-debug/CMakeFiles/vizsga.dir
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/vizsga/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/vizsga/cmake-build-debug/CMakeFiles/rebuild_cache.dir

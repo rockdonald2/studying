@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Laborhazik/Projektek/egyeb/orsi.cpp
+iostream
+-
+orsi.h
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Laborhazik/Projektek/egyeb/orsi.h
+
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Laborhazik/Projektek/egyeb/orsi.h
+iostream
+-
+

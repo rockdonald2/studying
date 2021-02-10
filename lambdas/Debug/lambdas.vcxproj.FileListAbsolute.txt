@@ -1,2 +1,0 @@
-D:\GitHub\studying\lambdas\Debug\lambdas.exe
-D:\GitHub\studying\lambdas\Debug\lambdas.pdb

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Tetelek/LancoltLista.cpp
+iostream
+-
+string
+-
+LancoltLista.h
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Tetelek/LancoltLista.h
+
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Tetelek/LancoltLista.h
+iostream
+-
+string
+-
+

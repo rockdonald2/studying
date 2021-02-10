@@ -1,0 +1,3 @@
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Tetelek/cmake-build-debug/CMakeFiles/Tetelek.dir
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Tetelek/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Tetelek/cmake-build-debug/CMakeFiles/rebuild_cache.dir

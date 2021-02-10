@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1586005854 source:d:\egyéb\egyetem\bevezetés a programozásba\programok\codeblocks\gergo\main.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdlib.h>
+	<math.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

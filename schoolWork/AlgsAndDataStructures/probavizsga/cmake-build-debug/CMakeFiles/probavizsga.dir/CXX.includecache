@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/probavizsga/feladat_2.cpp
+iostream
+-
+string
+-
+vector
+-
+

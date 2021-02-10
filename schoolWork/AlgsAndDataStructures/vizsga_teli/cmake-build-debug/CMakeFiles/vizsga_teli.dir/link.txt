@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\vizsga_teli.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\vizsga_teli.dir/objects.a @CMakeFiles\vizsga_teli.dir\objects1.rsp
+C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\vizsga_teli.dir/objects.a -Wl,--no-whole-archive  -o vizsga_teli.exe -Wl,--out-implib,libvizsga_teli.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\vizsga_teli.dir\linklibs.rsp

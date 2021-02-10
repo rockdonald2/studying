@@ -1,0 +1,3 @@
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Laborhazik/Projektek/cmake-build-debug/CMakeFiles/Projektek.dir
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Laborhazik/Projektek/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/rockd/Google Drive/Egyetem/Algoritmika/Laborhazik/Projektek/cmake-build-debug/CMakeFiles/rebuild_cache.dir

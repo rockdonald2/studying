@@ -1,0 +1,7 @@
+﻿  pelda.cpp
+e:\programok\c++\repos\ujratanulas44\ujratanulas44\pelda.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+e:\programok\c++\repos\ujratanulas44\ujratanulas44\pelda.cpp(20): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\programok\c++\repos\ujratanulas44\ujratanulas44\pelda.cpp(25): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+e:\programok\c++\repos\ujratanulas44\ujratanulas44\pelda.cpp(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+e:\programok\c++\repos\ujratanulas44\ujratanulas44\pelda.cpp(29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  ujratanulas44.vcxproj -> E:\Programok\C++\Repos\ujratanulas44\Debug\ujratanulas44.exe
